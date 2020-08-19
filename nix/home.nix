@@ -3,21 +3,19 @@
 # Stuff on this file, and ./*.nix, should work across all of my computing
 # devices. Presently these are: Thinkpad, Macbook and Pixel Slate.
 
-{ config, pkgs, device ? "unknown", ...}:
+{ config, pkgs, device ? "unknown", ... }:
 
 let
-  imports = [
+  baseImports = [
     ./git.nix
-    ./haskell.nix
-    ./shells.nix
-    ./tmux.nix
-    ./emacs
   ];
 in
 {
   nixpkgs.config.allowUnfree = true;
 
   programs.home-manager.enable = true;
+
+  imports = baseImports;
 
   home.packages = with pkgs; [
     # To track sources
@@ -29,16 +27,14 @@ in
     jq
     #youtube-dl
 
+    bat
+
+    # kube related stuff
     kubectl
     minikube
-    scala
 
-    # Dev tools
-    #gnumake
-    #ripgrep
-    #tig
-    #tmate
-    #gitAndTools.gh
+
+    scala
     dhall
   ];
 
