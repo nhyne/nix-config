@@ -29,6 +29,9 @@ in
     jq
     #youtube-dl
 
+    kubectl
+    minikube
+    scala
 
     # Dev tools
     #gnumake
