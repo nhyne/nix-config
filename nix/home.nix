@@ -35,6 +35,7 @@ in
 
 
     opam
+    ocaml
     scala
     dhall
     python
