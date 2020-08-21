@@ -8,6 +8,7 @@
 let
   baseImports = [
     ./git.nix
+    ./zsh.nix
   ];
 in
 {
@@ -25,10 +26,8 @@ in
     htop
     #file
     jq
-    #youtube-dl
-
-    python
     bat
+    #youtube-dl
 
     # kube related stuff
     kubectl
@@ -37,6 +36,7 @@ in
 
     scala
     dhall
+    python
   ];
 
   home.sessionVariables = {

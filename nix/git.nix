@@ -30,8 +30,6 @@
       cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d";
       rb = "!f() { git rebase -i HEAD^$1; }; f"; #interactive git rebase for the previous X commits
       sq = "!f() { git reset --soft HEAD^$1 && git commit; }; f"; #should automatically squash the last N commits into a single one with new commit message
-     # ss = "!f() { git stash save ${@:1}; }; f"; #stashes changes with a saved message, message does not have to be put into quotes
-      #ssa = "!f() { git stash save -u ${@:1}; }; f"; #stashes everything with a message, message does not have to be put into quotes
       sl = "stash list"; #lists stashes
       sp = "stash pop"; #pops top stash and applies
       l = "log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit";
@@ -45,8 +43,11 @@
       pr = "!f() { git dw $1...HEAD; }; f"; #makes PR-like diff on local
       cp = "cherry-pick";
       bd = "!f() { git-delete-squashed; }; f";
-     # find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'";
       show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'";
+      # Have an issue with these aliases because they include '@'
+      #ss = "!f() { git stash save ${@:1}; }; f"; #stashes changes with a saved message, message does not have to be put into quotes
+      #find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'";
+      #ssa = "!f() { git stash save -u ${@:1}; }; f"; #stashes everything with a message, message does not have to be put into quotes
     };
     extraConfig = {
       core.editor = "vim";
