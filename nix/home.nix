@@ -34,6 +34,7 @@ in
     minikube
 
 
+    opam
     scala
     dhall
     python

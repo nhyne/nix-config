@@ -26,14 +26,21 @@ in
         };
         sessionVariables = {
             EDITOR="vim";
+            SDKMAN_DIR="$HOME/.sdkman";
+            PATH="$HOME/.jenv/bin:$PATH";
         };
         history = {
             ignoreSpace = true;
             ignoreDups = true;
             extended = true;
-            share = true;
+            share = false;
             size = 100000;
             save = 100000;
         };
+        initExtraBeforeCompInit = ''
+            #eval "$(jenv init -)"
+            [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+            source ~/.keys/github_api_token.bash
+        '';
     };
 }
