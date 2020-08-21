@@ -27,6 +27,7 @@ in
     jq
     #youtube-dl
 
+    python
     bat
 
     # kube related stuff
