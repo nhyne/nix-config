@@ -9,6 +9,7 @@ let
   baseImports = [
     ./git.nix
     ./zsh.nix
+    ./vim.nix
   ];
 in
 {
