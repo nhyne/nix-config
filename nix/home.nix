@@ -10,6 +10,7 @@ let
     ./git.nix
     ./zsh.nix
     ./vim.nix
+    ./haskell.nix
   ];
 in
 {
