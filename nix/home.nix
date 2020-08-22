@@ -34,6 +34,7 @@ in
     minikube
 
 
+    go
     opam
     ocaml
     scala
