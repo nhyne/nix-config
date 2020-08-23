@@ -11,6 +11,7 @@ let
     ./zsh.nix
     ./vim.nix
     ./haskell.nix
+    ./go.nix
   ];
 in
 {
@@ -36,7 +37,6 @@ in
     minikube
 
 
-    go
     opam
     ocaml
     scala

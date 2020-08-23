@@ -27,8 +27,7 @@ in
         sessionVariables = {
             EDITOR="vim";
             SDKMAN_DIR="$HOME/.sdkman";
-            GOPATH="$HOME/developer/go";
-            PATH="$HOME/.jenv/bin:$GOPATH/bin:$PATH";
+            PATH="$HOME/.jenv/bin:$GOBIN:$PATH";
         };
         history = {
             ignoreSpace = true;
