@@ -10,6 +10,7 @@ let
     ./git.nix
     ./zsh.nix
     ./vim.nix
+    ./opam.nix
     ./haskell.nix
     ./go.nix
   ];
@@ -37,11 +38,9 @@ in
     minikube
 
 
-    opam
-    ocaml
     scala
     dhall
-    python
+    python # needed for bazel
   ];
 
   home.sessionVariables = {
