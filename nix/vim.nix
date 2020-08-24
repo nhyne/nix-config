@@ -1,26 +1,30 @@
 { pkgs, ... }:
 
-let plugins = [
-    "junegunn/vim-easy-align"
-];
-in
 {
-    programs.vim = {
+    programs.neovim = with pkgs.vimPlugins; {
         enable = true;
-        settings = {
-            number = true;
-            expandtab = true;
-            tabstop = 2;
-            shiftwidth = 2;
-        };
+        vimAlias = true;
+        viAlias = true;
+        vimdiffAlias = true;
+        plugins = [
+            ale
+            vim-airline
+            vim-airline-themes
+            vim-polyglot
+            zenburn
+        ];
         extraConfig = ''
-            set shell=bash\ --login
-            filetype off
+            syntax on
             colorscheme koehler
-            :set ruler
-            :set softtabstop=2
-            :set smarttab
-            :set autochdir
+            set shell=bash\ --login
+            set ruler
+            set softtabstop=2
+            set smarttab
+            set autochdir
+            set number
+            set expandtab
+            set tabstop=2
+            set shiftwidth=2
         '';
     };
 }
