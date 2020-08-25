@@ -18,6 +18,11 @@
         character.error_symbol = "✗";
         git_branch.style = "bold green";
         package.disabled = true;
+        golang.symbol = "";
+        kubernetes.disabled = false;
+        kubernetes.symbol = "";
+        ocaml.symbol = "";
+        rust.symbol = "";
     };
   };
 }
