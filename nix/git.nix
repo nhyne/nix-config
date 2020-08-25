@@ -9,7 +9,6 @@
     enable = true;
     userName = "nhyne";
     userEmail = "nhyne@nhyne.dev";
-    ignores = [ ];
     aliases = {
       c = "checkout";
       cm = "commit";
@@ -49,6 +48,14 @@
       #find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'";
       #ssa = "!f() { git stash save -u ${@:1}; }; f"; #stashes everything with a message, message does not have to be put into quotes
     };
+    ignores = [
+      ".idea"
+      ".DS_Store"
+      "target"
+      ".terraform"
+      ".ijwb"
+      "bazel-*"
+    ];
     extraConfig = {
       core.editor = "vim";
       core.excludesfile = "~/.gitignore_global";
