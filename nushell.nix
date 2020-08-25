@@ -13,5 +13,11 @@
 
   programs.starship = {
     enable = true;
+    settings = {
+        character.symbol = "➜";
+        character.error_symbol = "✗";
+        git_branch.style = "bold green";
+        package.disabled = true;
+    };
   };
 }
