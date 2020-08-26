@@ -19,10 +19,15 @@
         git_branch.style = "bold green";
         package.disabled = true;
         golang.symbol = "";
-        kubernetes.disabled = false;
+        kubernetes.disabled = true;
         kubernetes.symbol = "";
         ocaml.symbol = "";
         rust.symbol = "";
+        java.disabled = true;
+        aws.disabled = true;
+        python.disabled = true;
+        ruby.disabled = true;
+        nodejs.disabled = true;
     };
   };
 }
