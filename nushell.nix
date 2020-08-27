@@ -12,7 +12,7 @@
   };
 
   programs.starship = {
-    enable = true;
+    enable = false;
     settings = {
         character.symbol = "➜";
         character.error_symbol = "✗";
