@@ -32,6 +32,7 @@ in
     #file
     jq
     bat
+    shellcheck
     #youtube-dl
 
     # kube related stuff
@@ -40,6 +41,7 @@ in
 
 
     scala
+    scalafmt
     dhall
     python # needed for bazel
   ];
