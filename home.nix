@@ -3,7 +3,7 @@
 # Stuff on this file, and ./*.nix, should work across all of my computing
 # devices. Presently these are: Thinkpad, Macbook and Pixel Slate.
 
-{ config, pkgs, device ? "unknown", ... }:
+{ config, pkgs, ... }:
 
 let
   baseImports = [
@@ -39,6 +39,7 @@ in
     kubectl
     minikube
 
+    rustup
 
     scala
     scalafmt
