@@ -19,6 +19,8 @@ let defaultAliases = {
             else {
                 PATH="$HOME/.jenv/bin:$GOBIN:$PATH";
             };
+        shellAliases = if (builtins.currentSystem == "x86_64-darwin")
+            then defaultAliases else defaultAliases // linuxAliases;
 in
 {
     home.packages = with pkgs; [
@@ -28,7 +30,7 @@ in
     programs.zsh = {
         enable = true;
         autocd = true;
-        shellAliases = defaultAliases // linuxAliases;
+        inherit shellAliases;
         enableCompletion = true;
         oh-my-zsh = {
             enable = true;
