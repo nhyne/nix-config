@@ -1,11 +1,12 @@
 { config, lib, pkgs, ... }:
 
-let shellAliases = {
+let defaultAliases = {
             kubeami = "kubectl config current-context";
-            zhistfix = "mv ~/.zsh_history ~/.zsh_history_bad; strings ~/.zsh_history_bad > ~/.zsh_history; fc -R ~/.zsh_history; rm ~/.zsh_history_bad;";
             ll = "ls -lah";
             wthr = "curl wttr.in";
             ghpr = "hub pull-request -p";
+        };
+        linuxAliases = {
             pbcopy = "xclip -selection clipboard";
 	        pbpaste = "xclip -selection clipboard -o";
         };
@@ -27,7 +28,7 @@ in
     programs.zsh = {
         enable = true;
         autocd = true;
-        inherit shellAliases;
+        shellAliases = defaultAliases // linuxAliases;
         enableCompletion = true;
         oh-my-zsh = {
             enable = true;
