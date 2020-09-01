@@ -12,7 +12,7 @@ let shellAliases = {
         extraSessionVars = if (builtins.currentSystem == "x86_64-darwin")
             then {
                 PATH="$HOME/.jenv/bin:$HOME/.nix-profile/bin:$GOBIN:$PATH";
-                NIX_SSL_CERT_FILE=$HOME/.nix-profile/etc/ssl/certs/ca-bundle.crt
+                NIX_SSL_CERT_FILE="$HOME/.nix-profile/etc/ssl/certs/ca-bundle.crt";
                 NIX_PATH="NIX_PATH=$HOME/.nix-defexpr/channels";
             }
             else {
