@@ -51,4 +51,9 @@ in
     EDITOR = "vim";
   };
 
+  programs.direnv = {
+    enable = true;
+    enableNixDirenvIntegration = true;
+  };
+
 }
