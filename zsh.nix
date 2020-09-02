@@ -14,7 +14,6 @@ let defaultAliases = {
             then {
                 PATH="$HOME/.jenv/bin:$HOME/.nix-profile/bin:$GOBIN:$PATH";
                 NIX_SSL_CERT_FILE="$HOME/.nix-profile/etc/ssl/certs/ca-bundle.crt";
-                NIX_PATH="NIX_PATH=$HOME/.nix-defexpr/channels";
             }
             else {
                 PATH="$HOME/.jenv/bin:$GOBIN:$PATH";
@@ -52,6 +51,10 @@ in
             #eval "$(jenv init -)"
             [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
             source ~/.keys/github_api_token.bash
+            if [ "$(uname)" = "Darwin" ]
+            then
+              export NIX_PATH=$HOME/.nix-defexpr/channels
+            fi
         '';
     };
 }
