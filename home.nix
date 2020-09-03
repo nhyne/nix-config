@@ -35,6 +35,8 @@ in
     shellcheck
     #youtube-dl
 
+    awscli
+
     # kube related stuff
     kubectl
     minikube
