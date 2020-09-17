@@ -34,6 +34,7 @@ in
     bat
     shellcheck
     #youtube-dl
+    #gh # github cli. not sure if I want to use it yet
 
     awscli
 
