@@ -34,6 +34,9 @@ in
         oh-my-zsh = {
             enable = true;
             theme = "robbyrussell";
+            plugins = [
+                "kubectl"
+            ];
         };
         sessionVariables = {
             EDITOR="vim";
