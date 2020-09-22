@@ -7,7 +7,7 @@ let defaultAliases = {
             ghpr = "hub pull-request -p";
         };
         linuxAliases = {
-            pbcopy = "xclip -selection clipboard";
+          pbcopy = "xclip -selection clipboard";
 	        pbpaste = "xclip -selection clipboard -o";
         };
         extraSessionVars = if (builtins.currentSystem == "x86_64-darwin")
@@ -54,10 +54,10 @@ in
             #eval "$(jenv init -)"
             [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
             source ~/.keys/github_api_token.bash
-            if [ "$(uname)" = "Darwin" ]
-            then
-              export NIX_PATH=$HOME/.nix-defexpr/channels
-            fi
+#            if [ "$(uname)" = "Darwin" ]
+#            then
+#              export NIX_PATH=$HOME/.nix-defexpr/channels
+#            fi
         '';
     };
 }

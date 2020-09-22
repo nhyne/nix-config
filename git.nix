@@ -1,11 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-  ];
-
   programs.git = {
-    package = pkgs.gitAndTools.gitFull;
+    #package = pkgs.gitAndTools.gitFull;
     enable = true;
     userName = "nhyne";
     userEmail = "nhyne@nhyne.dev";
@@ -66,7 +63,14 @@
       merge.conflictstyle = "diff3";
       push.default = "current";
       diff."ansible-vault".textconv = "ansible-vault view";
-      url."git@github.com:".insteadOf = "https://github.com/";
+      url = {
+        "git@github.com:" = {
+          insteadOf = "https://github.com/";
+        };
+        "git://" = {
+          insteadOf = "https://";
+        };
+      };
     };
   };
 }
