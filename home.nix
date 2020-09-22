@@ -13,7 +13,6 @@ let
     ./opam.nix
     ./haskell.nix
     ./go.nix
-    ./nushell.nix
   ];
 in
 {
