@@ -55,7 +55,6 @@
     ];
     extraConfig = {
       core.editor = "vim";
-      core.excludesfile = "~/.gitignore_global";
       #credential.helper = "store --file ~/.git-credentials";
       pull.rebase = "false";
       branch.autosetuprebase = "always";
