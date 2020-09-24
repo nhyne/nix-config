@@ -41,6 +41,8 @@
       bd = "!f() { git-delete-squashed; }; f";
       show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'";
       # Have an issue with these aliases because they include '@'
+      ss = "stash save";
+      ssa = "stash save -u";
       #ss = "!f() { git stash save ${@:1}; }; f"; #stashes changes with a saved message, message does not have to be put into quotes
       #find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'";
       #ssa = "!f() { git stash save -u ${@:1}; }; f"; #stashes everything with a message, message does not have to be put into quotes
@@ -62,14 +64,14 @@
       merge.conflictstyle = "diff3";
       push.default = "current";
       diff."ansible-vault".textconv = "ansible-vault view";
-      url = {
-        "git@github.com:" = {
-          insteadOf = "https://github.com/";
-        };
-        "git://" = {
-          insteadOf = "https://";
-        };
-      };
+#      url = {
+#        "git@github.com:" = {
+#          insteadOf = "https://github.com/";
+#        };
+#        "git://" = {
+#          insteadOf = "https://";
+#        };
+#      };
     };
   };
 }
