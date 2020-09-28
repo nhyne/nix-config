@@ -8,7 +8,7 @@ let defaultAliases = {
         };
         linuxAliases = {
           pbcopy = "xclip -selection clipboard";
-	        pbpaste = "xclip -selection clipboard -o";
+					pbpaste = "xclip -selection clipboard -o";
         };
         shellAliases = if (builtins.currentSystem == "x86_64-darwin")
             then defaultAliases else defaultAliases // linuxAliases;
@@ -43,6 +43,11 @@ in
             size = 100000;
             save = 100000;
         };
+	profileExtra = ''
+if [ -e ''$HOME/.nix-profile/etc/profile.d/nix.sh ]; then . ''$HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+export NIX_PATH=''$HOME/.nix-defexpr/channels''${NIX_PATH:+:}''$NIX_PATH
+	'';
         initExtraBeforeCompInit = ''
             #eval "$(jenv init -)"
             [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
