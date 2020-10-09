@@ -42,6 +42,7 @@
       show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'";
       # Have an issue with these aliases because they include '@'
       ss = "stash save";
+      ssf = "stash push";
       ssa = "stash save -u";
       #ss = "!f() { git stash save ${@:1}; }; f"; #stashes changes with a saved message, message does not have to be put into quotes
       #find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'";

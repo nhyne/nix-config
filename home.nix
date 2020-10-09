@@ -54,7 +54,7 @@ in
   };
 
   programs.direnv = {
-    enable = false;
+    enable = true;
     enableNixDirenvIntegration = true;
   };
 
