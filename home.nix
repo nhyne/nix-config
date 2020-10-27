@@ -32,8 +32,8 @@ in
     jq
     bat
     shellcheck
-    #youtube-dl
-    #gh # github cli. not sure if I want to use it yet
+    youtube-dl
+    github-cli
 
     awscli
 

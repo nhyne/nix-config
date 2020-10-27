@@ -4,7 +4,7 @@ let defaultAliases = {
             kubeami = "kubectl config current-context";
             ll = "ls -lah";
             wthr = "curl wttr.in";
-            ghpr = "hub pull-request -p";
+            ghpr = "gh pr create";
         };
         linuxAliases = {
           pbcopy = "xclip -selection clipboard";
