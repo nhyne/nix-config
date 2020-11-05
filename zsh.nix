@@ -33,7 +33,7 @@ in
         sessionVariables = {
             EDITOR="vim";
             SDKMAN_DIR="$HOME/.sdkman";
-            PATH="$HOME/.jenv/bin:$GOBIN:$PATH";
+            PATH="$HOME/.cargo/bin:$HOME/.jenv/bin:$GOBIN:$PATH";
         };
         history = {
             ignoreSpace = true;
