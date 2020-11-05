@@ -34,6 +34,7 @@ in
     shellcheck
     youtube-dl
     github-cli
+    sbt
 
     awscli
 
