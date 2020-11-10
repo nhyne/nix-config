@@ -55,6 +55,7 @@
       ".terraform"
       ".ijwb"
       "bazel-*"
+      "stale_outputs_checked"
     ];
     extraConfig = {
       core.editor = "vim";
