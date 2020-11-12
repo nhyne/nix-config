@@ -58,7 +58,7 @@
       "stale_outputs_checked"
     ];
     extraConfig = {
-      core.editor = "vim";
+      core.editor = "nvim";
       #credential.helper = "store --file ~/.git-credentials";
       pull.rebase = "false";
       branch.autosetuprebase = "always";
