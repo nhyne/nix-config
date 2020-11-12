@@ -5,6 +5,8 @@ let defaultAliases = {
             ll = "ls -lah";
             wthr = "curl wttr.in";
             ghpr = "gh pr create";
+	    vi = "nvim";
+            vim = "nvim";
         };
         linuxAliases = {
           pbcopy = "xclip -selection clipboard";
