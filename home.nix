@@ -36,6 +36,8 @@ in
     github-cli
     sbt
 
+    ngrok
+
     awscli
 
     # kube related stuff
