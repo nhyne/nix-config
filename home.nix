@@ -37,6 +37,7 @@ in
     sbt
 
     ngrok
+    magic-wormhole
 
     awscli
 
