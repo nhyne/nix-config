@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
     programs.neovim = with pkgs.vimPlugins; {
@@ -9,22 +9,10 @@
         plugins = [
             ale
             vim-airline
-            vim-airline-themes
-            vim-polyglot
+            coc-metals
+            coc-nvim
             zenburn
         ];
-        extraConfig = ''
-            syntax on
-            colorscheme koehler
-            set shell=bash\ --login
-            set ruler
-            set softtabstop=2
-            set smarttab
-            set autochdir
-            set number
-            set expandtab
-            set tabstop=2
-            set shiftwidth=2
-        '';
+        extraConfig = lib.fileContents ./vimrc;
     };
 }
