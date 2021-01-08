@@ -63,6 +63,7 @@ in
     enableNixDirenvIntegration = true;
   };
 
-  services.caffeine.enable = true;
+# need to limit to linux
+#  services.caffeine.enable = true;
 
 }
