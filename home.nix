@@ -39,6 +39,7 @@ in
     ngrok
     magic-wormhole
 
+    nodejs
     awscli
 
     # kube related stuff
