@@ -62,4 +62,6 @@ in
     enableNixDirenvIntegration = true;
   };
 
+  services.caffeine.enable = true;
+
 }
