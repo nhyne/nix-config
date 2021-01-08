@@ -36,6 +36,7 @@ in
             EDITOR="vim";
             SDKMAN_DIR="$HOME/.sdkman";
             PATH="$HOME/.cargo/bin:$HOME/.jenv/bin:$GOBIN:$PATH";
+            SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=2G -Xmx2G $SBT_OPTS";
         };
         history = {
             ignoreSpace = true;
