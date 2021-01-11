@@ -56,6 +56,8 @@
       ".ijwb"
       "bazel-*"
       "stale_outputs_checked"
+      ".bloop"
+      ".metals"
     ];
     extraConfig = {
       core.editor = "nvim";
