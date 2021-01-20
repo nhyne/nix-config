@@ -38,6 +38,9 @@ in
 
     ngrok
     magic-wormhole
+    lastpass-cli
+    brave
+    postman
 
     nodejs
     awscli
