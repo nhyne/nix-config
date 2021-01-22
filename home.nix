@@ -41,6 +41,7 @@ in
     lastpass-cli
     brave
     postman
+    capnproto
 
     nodejs
     awscli
