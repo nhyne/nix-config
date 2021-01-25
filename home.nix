@@ -5,6 +5,7 @@
 
 { config, pkgs, ... }:
 
+
 let
   baseImports = [
     ./git.nix
@@ -16,7 +17,10 @@ let
   ];
 in
 {
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
+    "ngrok"
+    "postman"
+  ];
 
   programs.home-manager.enable = true;
 
@@ -35,10 +39,11 @@ in
     youtube-dl
     github-cli
     sbt
+    siege
 
     ngrok
     magic-wormhole
-    lastpass-cli
+    #lastpass-cli
     brave
     postman
     capnproto
