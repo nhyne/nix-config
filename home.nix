@@ -40,6 +40,8 @@ in
     github-cli
     sbt
     siege
+    loc
+    ripgrep
 
     ngrok
     magic-wormhole
