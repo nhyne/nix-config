@@ -20,6 +20,11 @@ in
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
     "ngrok"
     "postman"
+    "discord"
+    "slack"
+    "spotify"
+    "spotify-unwrapped"
+    "sublimetext3"
   ];
 
   programs.home-manager.enable = true;
@@ -46,9 +51,15 @@ in
     ngrok
     magic-wormhole
     #lastpass-cli
-    brave
-    postman
     capnproto
+
+    #applications
+    discord
+    slack
+    spotify
+    postman
+    sublime3
+    brave
 
     nodejs
     awscli
