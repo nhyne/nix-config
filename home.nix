@@ -72,6 +72,8 @@ in
 
     scala
     scalafmt
+    scalafix
+
     dhall
     python # needed for bazel
   ];

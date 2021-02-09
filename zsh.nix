@@ -5,6 +5,7 @@ let defaultAliases = {
             ll = "ls -lah";
             wthr = "curl wttr.in";
             ghpr = "gh pr create";
+            ecrlogin = "$(aws ecr get-login --no-include-email)";
 	    vi = "nvim";
             vim = "nvim";
         };
