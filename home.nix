@@ -47,6 +47,7 @@ in
     siege
     loc
     ripgrep
+    gron
 
     ngrok
     magic-wormhole
