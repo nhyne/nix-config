@@ -3,7 +3,7 @@
 # Stuff on this file, and ./*.nix, should work across all of my computing
 # devices. Presently these are: Thinkpad, Macbook and Pixel Slate.
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 
 let
@@ -15,6 +15,7 @@ let
     ./haskell.nix
     ./go.nix
   ];
+  iheartImport = if (builtins.pathExists /Users/adamjohnson/iheart/amp/amp-nix-config) then [ /Users/adamjohnson/iheart/amp/amp-nix-config ] else [] ;
   linuxPackages = with pkgs; if (builtins.currentSystem != "x86_64-darwin")
     then
         [
@@ -41,7 +42,7 @@ in
 
   programs.home-manager.enable = true;
 
-  imports = baseImports;
+  imports = baseImports ++ iheartImport;
 
   home.packages = with pkgs; [
     # To track sources
@@ -94,6 +95,13 @@ in
     enable = true;
     enableNixDirenvIntegration = true;
   };
+
+    amp = {
+        enableDefaults = false;
+        git = {
+            userName = "nhyne";
+        };
+    };
 
 # need to limit to linux
 #  services.caffeine.enable = true;
