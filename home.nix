@@ -3,6 +3,7 @@
 # Stuff on this file, and ./*.nix, should work across all of my computing
 # devices. Presently these are: Thinkpad, Macbook and Pixel Slate.
 
+# TODO: Pin pkgs with niv
 { config, pkgs, lib, ... }:
 
 
@@ -12,10 +13,17 @@ let
     ./zsh.nix
     ./vim.nix
     ./opam.nix
-    ./haskell.nix
+    #./haskell.nix
     ./go.nix
   ];
-  iheartImport = if (builtins.pathExists /Users/adamjohnson/iheart/amp/amp-nix-config) then [ /Users/adamjohnson/iheart/amp/amp-nix-config ] else [] ;
+  iheartImport = if (builtins.pathExists /Users/adamjohnson/iheart/amp/amp-nix-config) then [ /Users/adamjohnson/iheart/amp/amp-nix-config ./amp.nix ] else [] ;
+  iheartpackages = with pkgs; if (builtins.pathExists /Users/adamjohnson/iheart/amp/amp-nix-config)
+    then [] else [
+        sbt
+        awscli2
+        kubectl
+        scala
+      ] ;
   linuxPackages = with pkgs; if (builtins.currentSystem != "x86_64-darwin")
     then
         [
@@ -56,7 +64,6 @@ in
     shellcheck
     youtube-dl
     github-cli
-    sbt
     siege
     loc
     ripgrep
@@ -64,28 +71,24 @@ in
 
     ngrok
     magic-wormhole
-    #lastpass-cli
     capnproto
 
     #applications
     slack
 
     nodejs
-    awscli
 
     # kube related stuff
-    kubectl
     minikube
 
     rustup
 
-    scala
     scalafmt
     scalafix
 
     dhall
     python # needed for bazel
-  ] ++ linuxPackages;
+  ] ++ linuxPackages ++ iheartpackages;
 
   home.sessionVariables = {
     EDITOR = "vim";
@@ -95,13 +98,6 @@ in
     enable = true;
     enableNixDirenvIntegration = true;
   };
-
-    amp = {
-        enableDefaults = false;
-        git = {
-            userName = "nhyne";
-        };
-    };
 
 # need to limit to linux
 #  services.caffeine.enable = true;
