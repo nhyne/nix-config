@@ -15,6 +15,18 @@ let
     ./haskell.nix
     ./go.nix
   ];
+  linuxPackages = with pkgs; if (builtins.currentSystem != "x86_64-darwin")
+    then
+        [
+            discord
+            spotify
+            postman
+            brave
+            sublime3
+        ]
+     else [];
+
+
 in
 {
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
@@ -55,12 +67,7 @@ in
     capnproto
 
     #applications
-    discord
     slack
-    spotify
-    postman
-    sublime3
-    brave
 
     nodejs
     awscli
@@ -77,7 +84,7 @@ in
 
     dhall
     python # needed for bazel
-  ];
+  ] ++ linuxPackages;
 
   home.sessionVariables = {
     EDITOR = "vim";
