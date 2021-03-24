@@ -9,8 +9,6 @@
         plugins = [
             ale
             vim-airline
-            coc-metals
-            coc-nvim
             zenburn
         ];
         extraConfig = lib.fileContents ./vimrc;
