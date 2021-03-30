@@ -32,6 +32,8 @@ let
             postman
             brave
             sublime3
+            bitwarden
+            bitwarden-cli
         ]
      else [];
 
