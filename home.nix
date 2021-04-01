@@ -48,6 +48,7 @@ in
     "spotify"
     "spotify-unwrapped"
     "sublimetext3"
+    "authy"
   ];
 
   programs.home-manager.enable = true;
@@ -77,6 +78,7 @@ in
 
     #applications
     slack
+    authy
 
     nodejs
 
