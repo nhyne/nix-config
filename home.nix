@@ -34,6 +34,7 @@ let
             sublime3
             bitwarden
             bitwarden-cli
+            authy
         ]
      else [];
 
@@ -78,7 +79,6 @@ in
 
     #applications
     slack
-    authy
 
     nodejs
 
