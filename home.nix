@@ -72,6 +72,7 @@ in
     loc
     ripgrep
     gron
+    whois
 
     ngrok
     magic-wormhole
