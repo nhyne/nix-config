@@ -73,6 +73,7 @@ in
     ripgrep
     gron
     whois
+    ncdu
 
     ngrok
     magic-wormhole
