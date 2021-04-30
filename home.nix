@@ -1,13 +1,12 @@
-# https://nixos.wiki/wiki/Home_Manager
-
-# Stuff on this file, and ./*.nix, should work across all of my computing
-# devices. Presently these are: Thinkpad, Macbook and Pixel Slate.
-
 # TODO: Pin pkgs with niv
-{ config, pkgs, lib, ... }:
-
+{ config, lib, sources ? import ./sources.nix, ... }:
+#{ sources ? import ./sources.nix }:
 
 let
+  sources = import ./nix/sources.nix;
+  mypkgs = import sources.nixpkgs { };
+  home-manager = (import sources.home-manager { }).home-manager;
+
   baseImports = [
     ./git.nix
     ./zsh.nix
@@ -17,14 +16,14 @@ let
     ./go.nix
   ];
   iheartImport = if (builtins.pathExists /Users/adamjohnson/iheart/amp/amp-nix-config) then [ /Users/adamjohnson/iheart/amp/amp-nix-config ./amp.nix ] else [] ;
-  iheartpackages = with pkgs; if (builtins.pathExists /Users/adamjohnson/iheart/amp/amp-nix-config)
+  iheartpackages = with mypkgs; if (builtins.pathExists /Users/adamjohnson/iheart/amp/amp-nix-config)
     then [] else [
         sbt
         awscli2
         kubectl
         scala
       ] ;
-  linuxPackages = with pkgs; if (builtins.currentSystem != "x86_64-darwin")
+  linuxPackages = with mypkgs; if (builtins.currentSystem != "x86_64-darwin")
     then
         [
             discord
@@ -41,7 +40,7 @@ let
 
 in
 {
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
+  nixpkgs.config.allowUnfreePredicate = pkgg: builtins.elem (mypkgs.lib.getName pkgg) [
     "ngrok"
     "postman"
     "discord"
@@ -56,7 +55,7 @@ in
 
   imports = baseImports ++ iheartImport;
 
-  home.packages = with pkgs; [
+  home.packages = with mypkgs; [
     # To track sources
     niv
 
@@ -79,12 +78,12 @@ in
     magic-wormhole
     capnproto
 
-    #applications
+#    #applications
     slack
 
     nodejs
 
-    # kube related stuff
+#    # kube related stuff
     minikube
 
     rustup
