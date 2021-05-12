@@ -1,110 +1,91 @@
-# TODO: Pin pkgs with niv
-{ config, lib, sources ? import ./sources.nix, ... }:
-#{ sources ? import ./sources.nix }:
+{ config, lib, ... }:
 
 let
   sources = import ./nix/sources.nix;
-  mypkgs = import sources.nixpkgs { };
-  home-manager = (import sources.home-manager { }).home-manager;
+  pkgs = import sources.nixpkgs {
+    overlays = [
+      (_: _: { inherit sources; })
+    ];
+  };
 
   baseImports = [
     ./git.nix
     ./zsh.nix
     ./vim.nix
-    ./opam.nix
-    #./haskell.nix
-    ./go.nix
   ];
-  iheartImport = if (builtins.pathExists /Users/adamjohnson/iheart/amp/amp-nix-config) then [ /Users/adamjohnson/iheart/amp/amp-nix-config ./amp.nix ] else [] ;
-  iheartpackages = with mypkgs; if (builtins.pathExists /Users/adamjohnson/iheart/amp/amp-nix-config)
-    then [] else [
-        sbt
-        awscli2
-        kubectl
-        scala
-      ] ;
-  linuxPackages = with mypkgs; if (builtins.currentSystem != "x86_64-darwin")
+  linuxPackages = with pkgs; if (builtins.currentSystem != "x86_64-darwin")
     then
-        [
-            discord
-            spotify
-            postman
-            brave
-            sublime3
-            bitwarden
-            bitwarden-cli
-            authy
+      [
+        discord
+        spotify
+        postman
+        brave
+        sublime3
+        bitwarden
+        bitwarden-cli
         ]
      else [];
 
+  goPath = "developer/go";
 
-in
-{
-  nixpkgs.config.allowUnfreePredicate = pkgg: builtins.elem (mypkgs.lib.getName pkgg) [
-    "ngrok"
-    "postman"
-    "discord"
-    "slack"
-    "spotify"
-    "spotify-unwrapped"
-    "sublimetext3"
-    "authy"
-  ];
-
+in {
   programs.home-manager.enable = true;
 
-  imports = baseImports ++ iheartImport;
+  imports = baseImports;
 
-  home.packages = with mypkgs; [
-    # To track sources
-    niv
-
-    # Basic tools
-    htop
-    #file
-    jq
+  home.packages = with pkgs; [
+    awscli2
     bat
-    shellcheck
-    youtube-dl
-    github-cli
-    siege
-    loc
-    ripgrep
-    gron
-    whois
-    ncdu
-
-    ngrok
-    magic-wormhole
+#   cabal-install
     capnproto
-
-#    #applications
-    slack
-
-    nodejs
-
-#    # kube related stuff
-    minikube
-
-    rustup
-
-    scalafmt
-    scalafix
-
     dhall
+#   ghc
+    github-cli
+    gron
+    htop
+    jq
+    kubectl
+    loc
+    magic-wormhole
+    minikube
+    ncdu
+    ngrok
+    niv
+    nodejs
+    ocaml
     python # needed for bazel
-  ] ++ linuxPackages ++ iheartpackages;
+    ripgrep
+    rustup
+    sbt
+    scala
+    scalafix
+    scalafmt
+    shellcheck
+    siege
+    slack
+#   stack
+    whois
+    xclip
+    youtube-dl
+  ] ++ linuxPackages;
 
   home.sessionVariables = {
     EDITOR = "vim";
   };
 
+  programs.go = {
+    enable = true;
+    inherit goPath;
+    goBin = "${goPath}/bin";
+  };
+  programs.opam = {
+    enable = true;
+    enableZshIntegration = true;
+  };
   programs.direnv = {
     enable = true;
     enableNixDirenvIntegration = true;
   };
-
 # need to limit to linux
 #  services.caffeine.enable = true;
-
 }
