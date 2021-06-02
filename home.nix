@@ -34,7 +34,8 @@ in {
   imports = baseImports;
 
   home.packages = with pkgs; [
-    awscli2
+    awscli
+#   awscli2
     bat
 #   cabal-install
     capnproto
@@ -56,6 +57,7 @@ in {
     python # needed for bazel
     ripgrep
     rustup
+    saml2aws
     sbt
     scala
     scalafix
