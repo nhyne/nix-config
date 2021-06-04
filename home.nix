@@ -23,7 +23,7 @@ in {
 #   cabal-install
     capnproto
     dhall
-    discord
+#   discord
 #   ghc
     github-cli
     gron
@@ -34,11 +34,11 @@ in {
     magic-wormhole
     minikube
     ncdu
-    ngrok
+#   ngrok
     niv
     nodejs
     ocaml
-    postman
+#   postman
     python # needed for bazel
     ripgrep
     rustup
@@ -49,10 +49,10 @@ in {
     scalafmt
     shellcheck
     siege
-    slack
-    spotify
+#   slack
+#   spotify
 #   stack
-    sublime3
+#   sublime3
     whois
     xclip
     youtube-dl
