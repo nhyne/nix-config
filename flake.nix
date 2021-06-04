@@ -25,7 +25,7 @@
           configurationNix
 
           # Features common to all of my machines
-          ./features/docker.nix
+#          ./features/docker.nix
           # home-manager configuration
           home-manager.nixosModules.home-manager
           {
