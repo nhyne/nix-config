@@ -6,19 +6,6 @@ let
     ./zsh.nix
     ./vim.nix
   ];
-  linuxPackages = with pkgs; if (builtins.currentSystem != "x86_64-darwin")
-    then
-      [
-        discord
-        spotify
-        postman
-        brave
-        sublime3
-        bitwarden
-        bitwarden-cli
-        ]
-     else [];
-
   goPath = "developer/go";
 
 in {
@@ -30,9 +17,13 @@ in {
     awscli
 #   awscli2
     bat
+        bitwarden
+        bitwarden-cli
+        brave
 #   cabal-install
     capnproto
     dhall
+        discord
 #   ghc
     github-cli
     gron
@@ -47,6 +38,7 @@ in {
     niv
     nodejs
     ocaml
+        postman
     python # needed for bazel
     ripgrep
     rustup
@@ -58,11 +50,13 @@ in {
     shellcheck
     siege
     slack
+        spotify
 #   stack
+        sublime3
     whois
     xclip
     youtube-dl
-  ] ++ linuxPackages;
+  ];
 
   home.sessionVariables = {
     EDITOR = "vim";
