@@ -34,6 +34,7 @@
             home-manager.users.nhyne = import ./home.nix {
               inherit inputs system;
               pkgs = import nixpkgs { inherit system; };
+              inherit config;
             };
           }
         ] ++ extraModules);
