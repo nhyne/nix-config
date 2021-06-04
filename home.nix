@@ -17,13 +17,13 @@ in {
     awscli
 #   awscli2
     bat
-        bitwarden
-        bitwarden-cli
-        brave
+    bitwarden
+    bitwarden-cli
+    brave
 #   cabal-install
     capnproto
     dhall
-        discord
+    discord
 #   ghc
     github-cli
     gron
@@ -38,7 +38,7 @@ in {
     niv
     nodejs
     ocaml
-        postman
+    postman
     python # needed for bazel
     ripgrep
     rustup
@@ -50,9 +50,9 @@ in {
     shellcheck
     siege
     slack
-        spotify
+    spotify
 #   stack
-        sublime3
+    sublime3
     whois
     xclip
     youtube-dl
