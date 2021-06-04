@@ -1,14 +1,14 @@
 { config, lib, pkgs, modulesPath, ... }: {
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/ff7f290f-3905-41cd-bdba-5152b9d68391";
+    device = "/dev/disk/by-uuid/3dc22961-b3b0-4fbe-871a-89a322343494";
     fsType = "ext4";
   };
 
-  fileSystems."/boot/efi" = {
-    device = "D794-F18A";
-    fsType = "vfat";
-  };
+  #fileSystems."/boot/efi" = {
+  #  device = "D794-F18A";
+  #  fsType = "vfat";
+  #};
 
 boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
