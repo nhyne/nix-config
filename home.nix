@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ ... }:
 
 let
   sources = import ./nix/sources.nix;
