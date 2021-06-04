@@ -29,8 +29,8 @@
           # home-manager configuration
           home-manager.nixosModules.home-manager
           {
-            #home-manager.useGlobalPkgs = true;
-            #home-manager.useUserPackages = true;
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
             home-manager.users.nhyne = import ./home.nix {
               inherit inputs system;
               pkgs = import nixpkgs { inherit system; };
