@@ -1,4 +1,15 @@
 { config, lib, pkgs, modulesPath, ... }: {
+
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/ff7f290f-3905-41cd-bdba-5152b9d68391";
+    fsType = "ext4";
+  };
+
+  fileSystems."/boot/efi" = {
+    device = "D794-F18A";
+    fsType = "vfat";
+  };
+
     nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
