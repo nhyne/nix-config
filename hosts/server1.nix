@@ -10,15 +10,15 @@
   #  fsType = "vfat";
   #};
 
-boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-    nix = {
+  nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-    trustedUsers = [ "root" "srid" ];
+    trustedUsers = [ "root" "nhyne" ];
   };
 
   environment.systemPackages = with pkgs; [
