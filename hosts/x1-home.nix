@@ -24,7 +24,14 @@
   environment.systemPackages = with pkgs; [
     awscli2
     bat
+    bitwarden
+    bitwarden-cli
+    brave
+    capnproto
     dhall
+    discord
+    github-cli
+    gron
     htop
     jq
     kubectl
@@ -32,19 +39,25 @@
     magic-wormhole
     minikube
     ncdu
+    ngrok
+    ocaml
+    postman
     python # needed for bazel
     ripgrep
     rustup
     saml2aws
     sbt
+    scala
+    scalafix
+    scalafmt
     shellcheck
+    siege
+    slack
+    spotify
+    sublime3
     whois
     xclip
   ];
-
-  services = {
-    openssh.enable = true;
-  };
 
   users.users.nhyne = {
     isNormalUser = true;
@@ -56,7 +69,7 @@
     ];
   };
 
-   # This value determines the NixOS release from which the default
+  # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.

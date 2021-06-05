@@ -43,8 +43,6 @@
     {
       nixosConfigurations.server1 = mkHomeMachine
         ./hosts/server1.nix
-        [
-        #  inputs.nixos-hardware.nixosModules.lenovo-thinkpad-p53
-        ];
+        [];
     };
 }
