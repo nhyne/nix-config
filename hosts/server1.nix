@@ -1,7 +1,7 @@
 { config, lib, pkgs, modulesPath, ... }: {
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/3dc22961-b3b0-4fbe-871a-89a322343494";
+    device = "/dev/disk/by-label/nixos";
     fsType = "ext4";
   };
 
@@ -24,6 +24,10 @@ boot.loader.systemd-boot.enable = true;
   environment.systemPackages = with pkgs; [
     scala
   ];
+
+  services = {
+    openssh.enable = true;
+  };
 
   users.users.nhyne = {
     isNormalUser = true;
