@@ -10,7 +10,7 @@
   #  fsType = "vfat";
   #};
 
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.grub.device = "/dev/sda";
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
