@@ -23,7 +23,7 @@
   services.xserver.displayManager.gdm.enable = true;
 
   networking.networkmanager.enable = true;
-  networking.hostname = "x1-nhyne";
+  networking.hostName = "x1-nhyne";
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   # high-resolution display
