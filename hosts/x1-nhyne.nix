@@ -1,21 +1,62 @@
 { config, lib, pkgs, modulesPath, ... }: {
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-label/nixos";
-    fsType = "ext4";
-  };
+  imports = 
+    [ (modulesPath + "/installer/scan/not-detected.nix")
+    ];
 
-  #fileSystems."/boot/efi" = {
-  #  device = "D794-F18A";
-  #  fsType = "vfat";
-  #};
-
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.availableKernelModules = [ 
+    "xhci_pci" 
+    "nvme" 
+    "usb_storage" 
+    "usbhid"
+    "sd_mod" 
+ #   "aes_x86_64"
+    "aesni_intel" 
+    "cryptd" 
+  ];
+  boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+
+  #boot.initrd.luks.devices."luksroot".device = "/dev/disk/by-uuid/84138277-f825-4abc-b5c7-ed30dc3e00d9";
+
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/527e016f-a9f8-4cf9-b969-f5331bdd5441";
+      fsType = "ext4";
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/3471-24AA";
+      fsType = "vfat";
+    };
+
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/04ad8703-1c1b-4087-b355-a8a28aedaf72"; }
+    ];
+
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+
+  boot.initrd.luks.devices = {
+    luksroot = {
+      name = "luksroot";
+      device = "/dev/disk/by-uuid/84138277-f825-4abc-b5c7-ed30dc3e00d9";
+      preLVM = true;
+      allowDiscards = true;
+    };
+  };
+
+
+  boot.loader.grub = {
+    enable = true;
+    version = 2;
+    device = "nodev";
+    efiSupport = true;
+    enableCryptodisk = true;
+  };
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot.kernelParams = [ "intel_pstate=hwp" ];
+
+  boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   services.xserver.enable = true;
