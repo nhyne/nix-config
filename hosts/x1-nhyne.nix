@@ -20,8 +20,18 @@
 
   #boot.initrd.luks.devices."luksroot".device = "/dev/disk/by-uuid/84138277-f825-4abc-b5c7-ed30dc3e00d9";
 
+  boot.initrd.luks.devices = {
+    luksroot = {
+      name = "luksroot";
+      device = "/dev/disk/by-uuid/84138277-f825-4abc-b5c7-ed30dc3e00d9";
+      preLVM = true;
+      allowDiscards = true;
+    };
+  };
+
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/527e016f-a9f8-4cf9-b969-f5331bdd5441";
+    #{ device = "/dev/disk/by-uuid/527e016f-a9f8-4cf9-b969-f5331bdd5441";
+    { device = "/dev/disk/by-uuid/666e016f-a9f8-4cf9-b969-f5331bdd5441";
       fsType = "ext4";
     };
 
@@ -36,14 +46,6 @@
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
-  boot.initrd.luks.devices = {
-    luksroot = {
-      name = "luksroot";
-      device = "/dev/disk/by-uuid/84138277-f825-4abc-b5c7-ed30dc3e00d9";
-      preLVM = true;
-      allowDiscards = true;
-    };
-  };
 
 
   boot.loader.grub = {
