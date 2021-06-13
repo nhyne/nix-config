@@ -30,11 +30,15 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
+  services.localtime.enable = true;
+  services.geoclue2.enable = true;
+
 
   # Enable the GNOME 3 Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  time.timeZone = "EDT";
 
   boot.initrd.luks.devices = {
     root = {
@@ -92,6 +96,7 @@
     github-cli
     gron
     htop
+    jetbrains.idea-ultimate
     jq
     kubectl
     loc
@@ -114,8 +119,10 @@
     slack
     spotify
     sublime3
+    terminator
     whois
     xclip
+    zoom-us
   ];
 
   users.users.nhyne = {
