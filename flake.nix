@@ -53,5 +53,8 @@
 
       nixosConfigurations.nvme = mkHomeMachine
         ./hosts/nvme.nix [];
+
+      nixosConfigurations.x1-peloton = mkHomeMachine
+        ./hosts/x1-peloton.nix [];
     };
 }
