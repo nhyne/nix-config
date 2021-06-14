@@ -38,7 +38,7 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  time.timeZone = "EDT";
+  time.timeZone = "America/New_York";
 
   boot.initrd.luks.devices = {
     root = {

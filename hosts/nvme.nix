@@ -1,9 +1,13 @@
-{ config, lib, pkgs, modulesPath, ... }: {
+{ config, lib, pkgs, modulesPath, ... }:
+
+let
+  argocd = pkgs.callPackage ./../argocd.nix {};
+in
+{
 
   imports = 
     [
       (modulesPath + "/installer/scan/not-detected.nix")
-      ../argocd.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -40,7 +44,7 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  time.timeZone = "EDT";
+  time.timeZone = "America/New_York";
 
   boot.initrd.luks.devices = {
     root = {
@@ -87,12 +91,10 @@
   };
 
   environment.systemPackages = with pkgs; [
-    awscli2
+    argocd
+    awscli
     bat
-    bitwarden
-    bitwarden-cli
     brave
-    capnproto
     dhall
     discord
     github-cli
@@ -106,9 +108,7 @@
     minikube
     ncdu
     ngrok
-    ocaml
     postman
-    python # needed for bazel
     ripgrep
     rustup
     saml2aws
@@ -145,5 +145,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
-
 }
