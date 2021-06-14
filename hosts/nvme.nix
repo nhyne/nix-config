@@ -100,6 +100,7 @@ in
     docker-compose
     github-cli
     gron
+    helm
     htop
     jetbrains.idea-ultimate
     jq
