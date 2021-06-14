@@ -109,6 +109,7 @@ in
     minikube
     ncdu
     ngrok
+    openvpn
     postman
     ripgrep
     rustup
