@@ -93,6 +93,7 @@ in
   environment.systemPackages = with pkgs; [
     argocd
     awscli
+    aws-iam-authenticator
     bat
     brave
     dhall
