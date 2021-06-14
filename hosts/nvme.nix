@@ -97,6 +97,7 @@ in
     brave
     dhall
     discord
+    docker-compose
     github-cli
     gron
     htop
