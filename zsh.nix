@@ -50,6 +50,7 @@ export NIX_PATH=''$HOME/.nix-defexpr/channels''${NIX_PATH:+:}''$NIX_PATH
 #eval "$(jenv init -)"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 source ~/.keys/github_api_token.bash
+source ~/.peloton_zshrc
   '';
   };
 }
