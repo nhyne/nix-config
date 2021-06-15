@@ -100,6 +100,7 @@ in
     discord
     docker-compose
     github-cli
+    gnomeExtensions.caffeine
     gron
     htop
     jetbrains.idea-ultimate
