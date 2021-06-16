@@ -1,35 +1,46 @@
-{ config, lib, pkgs, modulesPath, ... }: {
+{ lib, pkgs, modulesPath, ... }: {
 
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-
   # Supposedly better for the SSD.
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
 
-  # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.efiSupport = true;
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader = {
+      grub = {
+        enable = true;
+        version = 2;
+        device = "nodev";
+        efiSupport = true;
+      };
 
-  # https://bugzilla.kernel.org/show_bug.cgi?id=110941
-  boot.kernelParams = [ "intel_pstate=no_hwp" ];
+      # Use the systemd-boot EFI boot loader.
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+
+    initrd = {
+      availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
+      kernelModules = [ "dm-snapshot" ];
+    };
+    kernelModules = [ "kvm-intel" ];
+    # https://bugzilla.kernel.org/show_bug.cgi?id=110941
+    kernelParams = [ "intel_pstate=no_hwp" ];
+    extraModulePackages = [ ];
+  };
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.enp0s31f6.useDHCP = true;
-  networking.interfaces.wlp2s0.useDHCP = true;
+  networking = {
+    useDHCP = false;
+    interfaces = {
+      enp0s31f6.useDHCP = true;
+      wlp2s0.useDHCP = true;
+    };
+  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -68,6 +79,41 @@
 "
     ];
   };
+
+  environment.systemPackages = with pkgs; [
+    bat
+    brave
+    dhall
+    github-cli
+    gron # json grep
+    htop
+    jetbrains.idea-ultimate
+    jq
+    kubectl
+    loc
+    magic-wormhole
+    minikube
+    ncdu
+    ngrok
+    ocaml
+    postman
+    python # needed for bazel
+    ripgrep # faster grep
+    rustup
+    sbt
+    scala
+    scalafix
+    scalafmt
+    shellcheck
+    siege
+    slack
+    spotify
+    sublime4
+    terminator
+    whois
+    xclip
+    zoom-us
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
