@@ -98,7 +98,6 @@
     ngrok
     ocaml
     postman
-    python # needed for bazel
     ripgrep # faster grep
     rustup
     sbt

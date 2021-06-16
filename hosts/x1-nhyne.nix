@@ -31,6 +31,7 @@
 
   environment.systemPackages = with pkgs; [
     bazel
+    python # needed for bazel
   ];
 
   # This value determines the NixOS release from which the default
