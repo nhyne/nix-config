@@ -81,12 +81,17 @@
   };
 
   environment.systemPackages = with pkgs; [
+    bandwhich # network ps
     bat
     bottom # better top
     brave
     dhall
+    dust # better du
+    exa # better ls
+    fd # better find
     github-cli
     gnomeExtensions.caffeine
+    grex # build regex cli
     gron # json grep
     jetbrains.idea-ultimate
     jq
@@ -98,12 +103,14 @@
     ngrok
     ocaml
     postman
+    procs # better ps
     ripgrep # faster grep
     rustup
     sbt
     scala
     scalafix
     scalafmt
+    sd # sed
     shellcheck
     siege
     slack
