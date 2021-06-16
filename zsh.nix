@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 let
-  defaultAliases = {
+  shellAliases = {
     kubeami = "kubectl config current-context";
     ll = "ls -lah";
     wthr = "curl wttr.in";
@@ -9,14 +9,9 @@ let
     ecrlogin = "$(aws ecr get-login --no-include-email)";
     vi = "nvim";
     vim = "nvim";
-  };
-  linuxAliases = {
     pbcopy = "xclip -selection clipboard";
     pbpaste = "xclip -selection clipboard -o";
   };
-  shellAliases = if (builtins.currentSystem == "x86_64-darwin")
-    then defaultAliases
-    else defaultAliases // linuxAliases;
 
 in {
 
@@ -55,6 +50,7 @@ export NIX_PATH=''$HOME/.nix-defexpr/channels''${NIX_PATH:+:}''$NIX_PATH
 #eval "$(jenv init -)"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 source ~/.keys/github_api_token.bash
+source ~/.peloton_zshrc
   '';
   };
 }
