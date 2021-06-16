@@ -46,10 +46,7 @@
         [];
 
       nixosConfigurations.x1-nhyne = mkHomeMachine
-        ./hosts/x1-nhyne.nix
-        [
-#          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-6th-gen
-        ];
+        ./hosts/x1-nhyne.nix [];
 
       nixosConfigurations.nvme = mkHomeMachine
         ./hosts/nvme.nix [];
