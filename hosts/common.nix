@@ -82,11 +82,12 @@
 
   environment.systemPackages = with pkgs; [
     bat
+    bottom # better top
     brave
     dhall
     github-cli
+    gnomeExtensions.caffeine
     gron # json grep
-    htop
     jetbrains.idea-ultimate
     jq
     kubectl
