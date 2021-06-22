@@ -8,6 +8,7 @@
     vimdiffAlias = true;
     plugins = [
       ale
+      nerdtree
       vim-airline
       zenburn
     ];

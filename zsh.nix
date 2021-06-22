@@ -3,9 +3,12 @@
 let
   shellAliases = {
     kubeami = "kubectl config current-context";
-    ll = "ls -lah";
+    ls = "exa";
+    ll = "exa -lah";
     wthr = "curl wttr.in";
+    find = "fd";
     ghpr = "gh pr create";
+    grep = "rg";
     ecrlogin = "$(aws ecr get-login --no-include-email)";
     vi = "nvim";
     vim = "nvim";
