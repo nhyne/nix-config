@@ -58,6 +58,7 @@
       "stale_outputs_checked"
       ".bloop"
       ".metals"
+      "*.iml"
     ];
     extraConfig = {
       core.editor = "nvim";
@@ -68,14 +69,14 @@
       merge.conflictstyle = "diff3";
       push.default = "current";
       diff."ansible-vault".textconv = "ansible-vault view";
-#      url = {
-#        "git@github.com:" = {
-#          insteadOf = "https://github.com/";
-#        };
-#        "git://" = {
-#          insteadOf = "https://";
-#        };
-#      };
+      url = {
+        "git@github.com:" = {
+          insteadOf = "https://github.com/";
+        };
+        "git://" = {
+          insteadOf = "https://";
+        };
+      };
     };
   };
 }
