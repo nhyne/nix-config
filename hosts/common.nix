@@ -1,5 +1,21 @@
-{ lib, pkgs, modulesPath, ... }: {
+{ lib, pkgs, modulesPath, ... }: 
 
+let
+  git-delete-squashed =
+    pkgs.writeShellScriptBin "git-delete-squashed" ''
+      # https://github.com/not-an-aardvark/git-delete-squashed
+      set -e
+      git checkout -q master
+      git for-each-ref refs/heads/ "--format=%(refname:short)" | \
+        while read branch
+        do
+          mergeBase=$(git merge-base master $branch)
+          [[ $(git cherry master $(git commit-tree $(git rev-parse $branch\^{tree}) -p $mergeBase -m _)) == "-"* ]]
+          git branch -D $branch
+        done
+    '';
+in
+{
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
@@ -89,6 +105,7 @@
     dust # better du
     exa # better ls
     fd # better find
+    git-delete-squashed
     github-cli
     gnomeExtensions.caffeine
     grex # build regex cli
