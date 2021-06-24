@@ -14,6 +14,7 @@ let
           git branch -D $branch
         done
     '';
+  squash = pkgs.writeShellScriptBin "squashed" (lib.fileContents ./../delete-squashed.sh);
 in
 {
   imports =
@@ -137,6 +138,7 @@ in
     whois
     xclip
     zoom-us
+    squash
   ];
 
   # This value determines the NixOS release from which the default
