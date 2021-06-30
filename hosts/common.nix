@@ -121,6 +121,7 @@ in
     siege
     slack
     spotify
+    sublime-merge
     sublime4
     terminator
     unzip
