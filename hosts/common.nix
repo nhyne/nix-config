@@ -107,6 +107,7 @@ in
     ncdu
     ngrok
     ocaml
+    openjdk16
     postman
     procs # better ps
     ripgrep # faster grep
@@ -122,8 +123,10 @@ in
     spotify
     sublime4
     terminator
+    unzip
     whois
     xclip
+    zip
     zoom-us
   ];
 
