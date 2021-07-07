@@ -9,6 +9,7 @@
     aliases = {
       c = "checkout";
       cm = "commit";
+      cmn = "commit --no-verify";
       a = "add";
       f = "fetch";
       ae = "add -u"; #adds all modified, does not add new files
