@@ -85,51 +85,16 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    bandwhich # network ps
-    bat
-    bottom # better top
-    brave
-    dhall
-    dust # better du
-    exa # better ls
-    fd # better find
     delete-squashed
-    firefox
-    github-cli
-    gnomeExtensions.caffeine
-    grex # build regex cli
-    gron # json grep
     jetbrains.idea-ultimate
-    jq
-    kubectl
-    loc
-    magic-wormhole
-    minikube
-    ncdu
     ngrok
-    ocaml
-    openjdk16
     postman
-    procs # better ps
     ripcord
-    ripgrep # faster grep
-    rustup
-    sbt
-    scala
-    scalafix
-    scalafmt
-    sd # sed
-    shellcheck
     siege
     slack
     spotify
     sublime-merge
     sublime4
-    terminator
-    unzip
-    whois
-    xclip
-    zip
     zoom-us
   ];
 

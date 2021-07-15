@@ -26,6 +26,44 @@ in {
     enable = true;
     enableNixDirenvIntegration = true;
   };
+
+  home.packages = with pkgs; [
+    bandwhich # network ps
+    bat
+    bottom # better top
+    dhall
+    dust # better du
+    exa # better ls
+    fd # better find
+    firefox
+    github-cli
+    gnomeExtensions.caffeine
+    grex # build regex cli
+    gron # json grep
+    jq
+    kubectl
+    loc
+    magic-wormhole
+    minikube
+    ncdu
+    ocaml
+    openjdk16
+    procs # better ps
+    ripgrep # faster grep
+    rustup
+    sbt
+    scala
+    scalafix
+    scalafmt
+    sd # sed
+    shellcheck
+    siege
+    terminator
+    unzip
+    whois
+    xclip
+    zip
+  ];
 # need to limit to linux
 #  services.caffeine.enable = true;
 }
