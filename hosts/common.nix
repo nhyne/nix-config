@@ -94,6 +94,7 @@ in
     exa # better ls
     fd # better find
     delete-squashed
+    firefox
     github-cli
     gnomeExtensions.caffeine
     grex # build regex cli
@@ -110,6 +111,7 @@ in
     openjdk16
     postman
     procs # better ps
+    ripcord
     ripgrep # faster grep
     rustup
     sbt
