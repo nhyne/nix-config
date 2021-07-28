@@ -14,6 +14,7 @@ let
     vim = "nvim";
     pbcopy = "xclip -selection clipboard";
     pbpaste = "xclip -selection clipboard -o";
+    del = "trash";
   };
 
 in {

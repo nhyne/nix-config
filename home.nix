@@ -59,6 +59,7 @@ in {
     shellcheck
     siege
     terminator
+    trash-cli
     unzip
     whois
     xclip
