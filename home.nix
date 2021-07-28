@@ -27,6 +27,8 @@ in {
     enableNixDirenvIntegration = true;
   };
 
+  services.gpg-agent.enable = true;
+
   home.packages = with pkgs; [
     bandwhich # network ps
     bat
