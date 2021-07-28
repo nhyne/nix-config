@@ -38,6 +38,7 @@ in {
     firefox
     github-cli
     gnomeExtensions.caffeine
+    gnupg
     grex # build regex cli
     gron # json grep
     jq
