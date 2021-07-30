@@ -86,6 +86,7 @@ in
 
   environment.systemPackages = with pkgs; [
     delete-squashed
+    discord
     jetbrains.idea-ultimate
     ngrok
     postman
