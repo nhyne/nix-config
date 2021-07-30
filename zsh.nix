@@ -15,6 +15,7 @@ let
     pbcopy = "xclip -selection clipboard";
     pbpaste = "xclip -selection clipboard -o";
     del = "trash";
+    nixs = "nix search nixpkgs $@";
   };
 
 in {
