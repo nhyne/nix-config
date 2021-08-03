@@ -6,10 +6,10 @@
     # https://status.nixos.org/
     #
     # This ensures that we always use the official # cache.
-    nixpkgs.url = "github:nixos/nixpkgs/3e0ce8c5d478d06b37a4faa7a4cc8642c6bb97de";
+    nixpkgs.url = "github:nixos/nixpkgs/7067d12bb5154c85c712177fbca42907cfd06722";
 
-    nixos-hardware.url = github:NixOS/nixos-hardware/master;
-    home-manager.url = "github:nix-community/home-manager";
+    nixos-hardware.url = github:NixOS/nixos-hardware/09ed30ff3bb67f5efe9c77e0d79aca01793526ca;
+    home-manager.url = "github:nix-community/home-manager/7f976da06840c268cc291a021bab7532b923713c";
   };
 
   outputs = inputs@{ self, home-manager, nixpkgs, ... }:
@@ -42,8 +42,7 @@
     in
     {
       nixosConfigurations.server1 = mkHomeMachine
-        ./hosts/server1.nix
-        [];
+        ./hosts/server1.nix [];
 
       nixosConfigurations.x1-nhyne = mkHomeMachine
         ./hosts/x1-nhyne.nix [];
