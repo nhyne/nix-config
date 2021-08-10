@@ -24,7 +24,7 @@ in {
   };
   programs.direnv = {
     enable = true;
-    enableNixDirenvIntegration = true;
+    nix-direnv.enable = true;
   };
 
   services.gpg-agent.enable = true;
