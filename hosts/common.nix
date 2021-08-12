@@ -64,7 +64,15 @@ in
   # high-resolution display
   hardware.video.hidpi.enable = lib.mkDefault true;
 
+  hardware.pulseaudio = {
+    enable = true;
+    support32Bit = true;
+  };
+  nixpkgs.config.pulseaudio = true;
+  users.extraUsers.nhyne.extraGroups = [ "audio" ];
+
   nixpkgs.config.allowUnfree = true;
+  
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
@@ -90,7 +98,6 @@ in
     jetbrains.idea-ultimate
     ngrok
     postman
-    ripcord
     siege
     slack
     spotify
