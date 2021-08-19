@@ -1,0 +1,1 @@
+There is an issue with intellij setting its own version of `LD_LIBRARY_PATH` which is not set anywhere else. Using the home-manager version of openjdk16 fixes this issue. I still need to figure out what the difference is and why it solves the problem.
