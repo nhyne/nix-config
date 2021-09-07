@@ -34,6 +34,7 @@ in {
     bat
     bottom # better top
     dhall
+    dig
     dust # better du
     exa # better ls
     fd # better find
