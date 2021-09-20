@@ -60,6 +60,7 @@
       ".bloop"
       ".metals"
       "*.iml"
+      "nogit"
     ];
     extraConfig = {
       core.editor = "nvim";
