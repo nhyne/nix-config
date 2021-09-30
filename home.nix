@@ -30,6 +30,7 @@ in {
   services.gpg-agent.enable = true;
 
   home.packages = with pkgs; [
+    awscli2
     bandwhich # network ps
     bat
     bottom # better top
