@@ -2,6 +2,10 @@
 
 let
   delete-squashed = pkgs.writeShellScriptBin "delete-squashed" (lib.fileContents ./../delete-squashed.sh);
+  zoom = pkgs.zoom-us.overrideAttrs (old: {
+    postFixup = old.postFixup + ''
+      wrapProgram $out/bin/zoom-us --unset XDG_SESSION_TYPE
+    '';});
 in
 {
   imports =
@@ -103,7 +107,7 @@ in
     spotify
     sublime-merge
     sublime4
-    zoom-us
+    zoom
   ];
 
   # This value determines the NixOS release from which the default
