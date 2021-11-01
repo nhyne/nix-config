@@ -61,7 +61,8 @@ in
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  # Reduces performance but makes the battery last a LOT longer
+  # powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
   networking.networkmanager.enable = true;
 
