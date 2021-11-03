@@ -45,6 +45,7 @@ in {
     gnupg
     grex # build regex cli
     gron # json grep
+    idris2
     jq
     kubectl
     loc
@@ -65,6 +66,7 @@ in {
     siege
     terminator
     trash-cli
+    unison-ucm
     unzip
     whois
     xclip
