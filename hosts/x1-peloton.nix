@@ -41,6 +41,7 @@ in
     kubernetes-helm
     kustomize
     openvpn
+    operator-sdk
     saml2aws
   ];
 
