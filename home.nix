@@ -71,6 +71,7 @@ in {
     whois
     xclip
     zip
+    pkgs.idris2-pkgs.lsp
   ];
 # need to limit to linux
 #  services.caffeine.enable = true;

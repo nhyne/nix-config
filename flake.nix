@@ -9,9 +9,10 @@
     nixpkgs.url = "github:nixos/nixpkgs/4da1ca8777028baac708cd308326d011d566e28";
     nixos-hardware.url = github:NixOS/nixos-hardware/342048461da7fc743e588ee744080c045613a226;
     home-manager.url = "github:nix-community/home-manager/039f786e609fdb3cfd9c5520ff3791750c3eaebf";
+    idris2-pkgs.url = "github:claymager/idris2-pkgs/30fd539986516d9dd501b552ec07a04482f4b8b1";
   };
 
-  outputs = inputs@{ self, home-manager, nixpkgs, ... }:
+  outputs = inputs@{ self, home-manager, nixpkgs, idris2-pkgs, ... }:
     let
       system = "x86_64-linux";
       # Make configuration for any computer I use in my home office.
@@ -33,7 +34,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.nhyne = import ./home.nix {
               inherit inputs system;
-              pkgs = import nixpkgs { inherit system; };
+              pkgs = import nixpkgs { inherit system; overlays = [ idris2-pkgs.overlay ]; };
             };
           }
         ] ++ extraModules);
