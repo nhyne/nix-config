@@ -7,6 +7,7 @@ let
     ./vim.nix
   ];
   goPath = "developer/go";
+  ecrlogin = pkgs.writeShellScriptBin "ecrlogin" (pkgs.lib.fileContents ./scripts/ecr-login.sh);
 
 in {
   programs.home-manager.enable = true;
@@ -37,6 +38,7 @@ in {
     dhall
     dig
     dust # better du
+    ecrlogin
     exa # better ls
     fd # better find
     firefox

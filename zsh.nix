@@ -9,7 +9,7 @@ let
     find = "fd";
     ghpr = "gh pr create";
     grep = "rg";
-    ecrlogin = "$(aws ecr get-login --no-include-email)";
+  #  ecrlogin = "$(aws ecr get-login --no-include-email)";
     vi = "nvim";
     vim = "nvim";
     pbcopy = "xclip -selection clipboard";
