@@ -32,7 +32,15 @@ in
     [ { device = "/dev/disk/by-uuid/e31cfbf9-ba2c-4b98-89d6-08394230ed71"; }
     ];
 
-  networking.hostName = "x1-peloton";
+  networking = {
+    hostName = "x1-peloton";
+    useDHCP = false;
+    interfaces = {
+      enp0s31f6.useDHCP = true;
+      wlp0s20f3.useDHCP = true;
+    };
+  };
+
 
   environment.systemPackages = with pkgs; [
     argocd
