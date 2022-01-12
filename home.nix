@@ -5,6 +5,7 @@ let
     ./git.nix
     ./zsh.nix
     ./vim.nix
+    /etc/nixos/compute-nix/compute.nix
   ];
   goPath = "developer/go";
   ecrlogin = pkgs.writeShellScriptBin "ecrlogin" (pkgs.lib.fileContents ./scripts/ecr-login.sh);

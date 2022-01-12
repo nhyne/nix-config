@@ -1,5 +1,18 @@
 {
   "nodes": {
+    "compute-nix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 0,
+        "narHash": "sha256-M7HT1feEWRbflYhwezr9dFF7ri1RaoChV+3Am3WDDbo=",
+        "type": "git",
+        "url": "file:///etc/nixos/compute-nix"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///etc/nixos/compute-nix"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -67,6 +80,7 @@
     },
     "root": {
       "inputs": {
+        "compute-nix": "compute-nix",
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2"
