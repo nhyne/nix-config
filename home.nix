@@ -55,7 +55,7 @@ in {
     minikube
     ncdu
     ocaml
-    openjdk16
+    openjdk
     procs # better ps
     ripgrep # faster grep
     rustup
