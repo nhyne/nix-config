@@ -70,6 +70,7 @@ in {
     trash-cli
     unison-ucm
     unzip
+    vlc
     whois
     xclip
     zip
