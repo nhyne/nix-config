@@ -35,7 +35,7 @@ in {
     bandwhich # network ps
     bat
     bottom # better top
-    dhall
+    # dhall
     dig
     dust # better du
     ecrlogin
@@ -47,18 +47,16 @@ in {
     gnupg
     grex # build regex cli
     gron # json grep
-    idris2
     jq
     kubectl
     loc
     magic-wormhole
     minikube
     ncdu
-    ocaml
+    # ocaml
     openjdk
     procs # better ps
     ripgrep # faster grep
-    rustup
     sbt
     scala
     scalafix
@@ -67,8 +65,6 @@ in {
     shellcheck
     siege
     terminator
-    trash-cli
-    unison-ucm
     unzip
     vlc
     whois
