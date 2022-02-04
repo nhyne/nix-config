@@ -31,7 +31,10 @@
 
   environment.systemPackages = with pkgs; [
     bazel
+    idris2
     python # needed for bazel
+    rustup
+    unison-ucm
   ];
 
   # This value determines the NixOS release from which the default
