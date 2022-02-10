@@ -106,8 +106,6 @@ in
     siege
     slack
     spotify
-    sublime-merge
-    sublime4
     vscode
     zoom
   ];
