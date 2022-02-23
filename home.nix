@@ -64,6 +64,7 @@ in {
     sd # sed
     shellcheck
     siege
+    stern # multi pod logs in k8s
     terminator
     unzip
     vlc
