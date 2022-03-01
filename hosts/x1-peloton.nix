@@ -46,6 +46,7 @@ in
     argocd
     awscli
     docker-compose
+    globalprotect-openconnect
     kubernetes-helm
     kustomize
     openvpn
