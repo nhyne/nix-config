@@ -70,6 +70,7 @@
       branch.autosetupmerge = "always";
       merge.conflictstyle = "diff3";
       push.default = "current";
+      init.defaultBranch = "main";
       diff."ansible-vault".textconv = "ansible-vault view";
       url = {
         "git@github.com:" = {

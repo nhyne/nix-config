@@ -41,6 +41,7 @@ in
     };
   };
 
+  services.globalprotect.enable = true;
 
   environment.systemPackages = with pkgs; [
     argocd
