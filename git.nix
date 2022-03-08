@@ -52,6 +52,7 @@
     ignores = [
       ".idea"
       ".DS_Store"
+      "result"
       "target"
       ".terraform"
       ".ijwb"
