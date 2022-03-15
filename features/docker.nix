@@ -1,7 +1,7 @@
 { pkgs, ... }: {
-  virtualisation.docker.enable = true;
+  virtualisation.podman = {
+    enable = true;
 
-  users.users.nhyne = {
-    extraGroups = [ "lxd" "docker" ];
+    dockerCompat = true;
   };
 }
