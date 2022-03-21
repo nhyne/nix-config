@@ -42,6 +42,7 @@ in {
     exa # better ls
     fd # better find
     firefox
+    gdb
     github-cli
     gnomeExtensions.caffeine
     gnupg
@@ -58,6 +59,7 @@ in {
     openjdk
     procs # better ps
     ripgrep # faster grep
+    rr # debugging tool
     sbt
     scala
     scalafix
