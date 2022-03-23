@@ -102,6 +102,7 @@ in
     discord
     jetbrains.idea-ultimate
     ngrok
+    postman
     siege
     slack
     spotify

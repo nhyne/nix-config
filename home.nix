@@ -48,7 +48,6 @@ in {
     gnupg
     grex # build regex cli
     gron # json grep
-    insomnia
     jq
     kubectl
     loc
