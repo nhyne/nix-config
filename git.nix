@@ -39,7 +39,7 @@
       fls = "!f() { git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --all --full-history -- $1; }; f"; #searches code base for a file as a given path, can include deleted files
       pr = "!f() { git dw $1...HEAD; }; f"; #makes PR-like diff on local
       cp = "cherry-pick";
-      bd = "!f() { git-delete-squashed; }; f";
+      bd = "!f() { delete-squashed $1; }; f";
       show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'";
       # Have an issue with these aliases because they include '@'
       ss = "stash save";
