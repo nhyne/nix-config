@@ -8,7 +8,7 @@
     # This ensures that we always use the official # cache.
     nixpkgs.url = "github:nixos/nixpkgs/2f06b87f64bc06229e05045853e0876666e1b023";
     nixos-hardware.url = github:NixOS/nixos-hardware/342048461da7fc743e588ee744080c045613a226;
-    home-manager.url = "github:nix-community/home-manager/039f786e609fdb3cfd9c5520ff3791750c3eaebf";
+    home-manager.url = "github:nix-community/home-manager/7244c6715cb8f741f3b3e1220a9279e97b2ed8f5";
   };
 
   outputs = inputs@{ self, home-manager, nixpkgs, ... }:
