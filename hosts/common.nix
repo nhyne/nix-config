@@ -99,6 +99,16 @@ in
     ];
   };
 
+  security.sudo.extraRules = [
+    { users = [ "nhyne" ];
+      commands = [
+        { command = "/run/current-system/sw/bin/podman";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
+
   environment.systemPackages = with pkgs; [
     delete-squashed
     discord
