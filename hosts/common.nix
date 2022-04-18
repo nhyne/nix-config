@@ -99,6 +99,7 @@ in
     ];
   };
 
+  # remove when minikube version has "rootless" option available
   security.sudo.extraRules = [
     { users = [ "nhyne" ];
       commands = [
