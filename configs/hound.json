@@ -1,0 +1,18 @@
+{
+    "max-concurrent-indexers" : 2,
+    "dbpath" : "/var/lib/hound/data",
+    "title" : "Hound",
+    "health-check-uri" : "/healthz",
+    "vcs-config" : {
+        "git": {
+            "detect-ref" : true
+        }
+    },
+    "repos" : {
+        "kredik-shaw" : {
+            "url" : "git@github.com:nhyne/kredik-shaw.git",
+            "ms-between-poll": 300000,
+            "exclude-dot-files": true
+        }
+    }
+}

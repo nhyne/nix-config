@@ -29,6 +29,11 @@
 
   networking.hostName = "x1-nhyne";
 
+  services.hound = {
+    enable = true;
+    config = (pkgs.lib.fileContents ./../configs/hound.json);
+  };
+
   environment.systemPackages = with pkgs; [
     bazel
     idris2

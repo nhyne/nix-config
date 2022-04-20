@@ -1,0 +1,53 @@
+{
+    "max-concurrent-indexers" : 2,
+    "dbpath" : "/var/lib/hound/data",
+    "title" : "Hound",
+    "health-check-uri" : "/healthz",
+    "vcs-config" : {
+        "git": {
+            "detect-ref" : true
+        }
+    },
+    "repos" : {
+        "sre-k8s" : {
+            "url" : "git@github.com:pelotoncycle/sre-k8s.git",
+            "ms-between-poll": 100000,
+            "exclude-dot-files": true
+        },
+        "ahab-jobs" : {
+            "url" : "git@github.com:pelotoncycle/ahab-v2.git",
+            "ms-between-poll": 100000,
+            "exclude-dot-files": true
+        },
+        "gybe" : {
+            "url" : "git@github.com:pelotoncycle/gybe.git",
+            "ms-between-poll": 100000,
+            "exclude-dot-files": true
+        },
+        "ahab-data-store" : {
+            "url" : "git@github.com:pelotoncycle/ahab-data-store-operator.git",
+            "ms-between-poll": 100000,
+            "exclude-dot-files": true
+        },
+        "deckhand" : {
+            "url" : "git@github.com:pelotoncycle/deckhand.git",
+            "ms-between-poll": 100000,
+            "exclude-dot-files": true
+        },
+        "core-eng-common" : {
+            "url" : "git@github.com:pelotoncycle/core-eng-common.git",
+            "ms-between-poll": 100000,
+            "exclude-dot-files": true
+        },
+        "core-eng-k8s-custom-khchecks" : {
+            "url" : "git@github.com:pelotoncycle/core-eng-k8s-custom-khchecks.git",
+            "ms-between-poll": 100000,
+            "exclude-dot-files": true
+        },
+        "keel" : {
+            "url" : "git@github.com:pelotoncycle/keel.git",
+            "ms-between-poll": 100000,
+            "exclude-dot-files": true
+        }
+    }
+}

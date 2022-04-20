@@ -43,6 +43,11 @@ in
 
   services.globalprotect.enable = true;
 
+  services.hound = {
+    enable = true;
+    config = (pkgs.lib.fileContents ./../configs/peloton-hound.json);
+  };
+
   environment.systemPackages = with pkgs; [
     argocd
     awscli
