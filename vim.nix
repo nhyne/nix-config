@@ -8,8 +8,12 @@
     vimdiffAlias = true;
     plugins = [
       ale
+      idris2-vim
       nerdtree
       vim-airline
+      vim-go
+      vim-scala
+      vim-terraform
       zenburn
     ];
     extraConfig = lib.fileContents ./vimrc;
