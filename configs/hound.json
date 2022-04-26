@@ -13,6 +13,21 @@
             "url" : "git@github.com:nhyne/kredik-shaw.git",
             "ms-between-poll": 300000,
             "exclude-dot-files": true
+        },
+        "grocery" : {
+            "url" : "git@github.com:nhyne/grocery.git",
+            "ms-between-poll": 300000,
+            "exclude-dot-files": true
+        },
+        "zio-dynamodb" : {
+            "url" : "git@github.com:zio/zio-dynamodb.git",
+            "ms-between-poll": 300000,
+            "exclude-dot-files": true
+        },
+        "zio" : {
+            "url" : "git@github.com:zio/zio.git",
+            "ms-between-poll": 300000,
+            "exclude-dot-files": true
         }
     }
 }
