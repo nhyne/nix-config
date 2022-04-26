@@ -28,6 +28,11 @@
             "url" : "git@github.com:zio/zio.git",
             "ms-between-poll": 300000,
             "exclude-dot-files": true
+        },
+        "zio-schema" : {
+            "url" : "git@github.com:zio/zio-schema.git",
+            "ms-between-poll": 300000,
+            "exclude-dot-files": true
         }
     }
 }
