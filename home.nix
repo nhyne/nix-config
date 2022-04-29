@@ -68,6 +68,7 @@ in {
     shellcheck
     siege
     stern # multi pod logs in k8s
+    telnet
     terminator
     unzip
     vlc
