@@ -72,7 +72,7 @@ in {
     terminator
     unzip
     vlc
-    whois
+    # whois
     xclip
     zip
   ];

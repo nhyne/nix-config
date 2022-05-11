@@ -22,17 +22,42 @@
         "zio-dynamodb" : {
             "url" : "git@github.com:zio/zio-dynamodb.git",
             "ms-between-poll": 300000,
-            "exclude-dot-files": true
+            "exclude-dot-files": true,
+            "vcs-config": {
+              "ref": "zio2"
+            }
         },
         "zio" : {
             "url" : "git@github.com:zio/zio.git",
             "ms-between-poll": 300000,
-            "exclude-dot-files": true
+            "exclude-dot-files": true,
+            "vcs-config": {
+              "ref": "series/2.x"
+            }
         },
         "zio-schema" : {
             "url" : "git@github.com:zio/zio-schema.git",
             "ms-between-poll": 300000,
-            "exclude-dot-files": true
+            "exclude-dot-files": true,
+            "vcs-config": {
+              "ref": "zio2"
+            }
+        },
+        "zio-json" : {
+            "url" : "git@github.com:zio/zio-json.git",
+            "ms-between-poll": 300000,
+            "exclude-dot-files": true,
+            "vcs-config": {
+              "ref": "zio2"
+            }
+        },
+        "zio-nio" : {
+            "url" : "git@github.com:zio/zio-nio.git",
+            "ms-between-poll": 300000,
+            "exclude-dot-files": true,
+            "vcs-config": {
+              "ref": "series/2.x"
+            }
         }
     }
 }
