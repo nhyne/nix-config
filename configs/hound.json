@@ -58,6 +58,14 @@
             "vcs-config": {
               "ref": "series/2.x"
             }
+        },
+        "zio-http" : {
+            "url" : "git@github.com:dream11/zio-http.git",
+            "ms-between-poll": 300000,
+            "exclude-dot-files": true,
+            "vcs-config": {
+              "ref": "zio-series/2.x"
+            }
         }
     }
 }
