@@ -48,6 +48,19 @@
             "url" : "git@github.com:pelotoncycle/keel.git",
             "ms-between-poll": 100000,
             "exclude-dot-files": true
+        },
+        "nixpkgs" : {
+            "url" : "git@github.com:nixos/nixpkgs.git",
+            "ms-between-poll": 300000,
+            "exclude-dot-files": true,
+            "vcs-config": {
+              "ref": "nixos-21.11"
+            }
+        },
+        "home-manager" : {
+            "url" : "git@github.com:nix-community/home-manager.git",
+            "ms-between-poll": 300000,
+            "exclude-dot-files": true
         }
     }
 }
