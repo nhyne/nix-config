@@ -1,17 +1,42 @@
 { config, lib, pkgs, modulesPath, ... }: {
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-label/nixos";
-    fsType = "ext4";
-  };
+  imports =
+    [ (modulesPath + "/profiles/qemu-guest.nix")
+    ];
 
-  #fileSystems."/boot/efi" = {
-  #  device = "D794-F18A";
-  #  fsType = "vfat";
-  #};
+  boot.initrd.availableKernelModules = [ "virtio_pci" "virtio_scsi" "ahci" "sd_mod" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ ];
+  boot.extraModulePackages = [ ];
+#  boot.loader.grub.forceInstall = true;
+#  boot.loader.grub.device = "nodev";
+  boot.loader.timeout = 10;
+#
+  boot.kernelParams = [ "console=ttyS0,19200n8" ];
+  boot.loader.grub.extraConfig = ''
+    serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1;
+    terminal_input serial;
+    terminal_output serial
+  '';
+#
+#
+#
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/c03a8673-2773-4deb-b4dd-8717ca258bac";
+      fsType = "ext4";
+    };
+
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/6c7df943-47b6-4b30-a698-681739d32b2d"; }
+    ];
+#  swapDevices = [ { device = "/dev/sdb"; } ];
+
+  boot.loader.grub.forceInstall = true;
+  boot.loader.grub.device = "nodev";
+  #boot.loader.systemd-boot.enable = true;
+  #boot.loader.efi.canTouchEfiVariables = true;
 
   nix = {
     package = pkgs.nixFlakes;
