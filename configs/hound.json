@@ -51,6 +51,11 @@
               "ref": "zio2"
             }
         },
+        "zio-jdbc" : {
+            "url" : "git@github.com:zio/zio-jdbc.git",
+            "ms-between-poll": 300000,
+            "exclude-dot-files": true
+        },
         "zio-nio" : {
             "url" : "git@github.com:zio/zio-nio.git",
             "ms-between-poll": 300000,
