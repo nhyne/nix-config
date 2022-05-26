@@ -18,9 +18,7 @@
     terminal_input serial;
     terminal_output serial
   '';
-#
-#
-#
+
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   fileSystems."/" =
@@ -67,7 +65,11 @@
   ];
 
   services = {
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      permitRootLogin = "no";
+      passwordAuthentication = true;
+    };
   };
 
   users.users.nhyne = {
@@ -86,6 +88,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "20.09"; # Did you read the comment?
+  system.stateVersion = "21.11"; # Did you read the comment?
 
 }
