@@ -2,10 +2,7 @@
 
 {
 
-  imports = 
-    [
-      ./common.nix
-    ];
+  imports = [ ./common.nix ];
 
   boot.initrd.luks.devices = {
     root = {
@@ -15,19 +12,18 @@
     };
   };
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/7a1f578b-fdc9-40cc-8ff2-b143f111ffd5";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/7a1f578b-fdc9-40cc-8ff2-b143f111ffd5";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/A3A7-CC8A";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/A3A7-CC8A";
+    fsType = "vfat";
+  };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/1ba06006-4e9d-464c-b13b-8ec7c2ca397d"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/1ba06006-4e9d-464c-b13b-8ec7c2ca397d"; }];
 
   networking.hostName = "nvme-ext";
 

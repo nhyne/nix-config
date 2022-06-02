@@ -1,9 +1,6 @@
 { config, lib, pkgs, modulesPath, ... }: {
 
-  imports = 
-    [
-      ./common.nix
-    ];
+  imports = [ ./common.nix ];
 
   boot.initrd.luks.devices = {
     root = {
@@ -13,19 +10,18 @@
     };
   };
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/7b5dda5b-d5be-4075-9eb6-1fc27c6bc224";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/7b5dda5b-d5be-4075-9eb6-1fc27c6bc224";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/5A98-A29D";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/5A98-A29D";
+    fsType = "vfat";
+  };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/82db1de2-0d51-4308-a224-7e341b6fcbeb"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/82db1de2-0d51-4308-a224-7e341b6fcbeb"; }];
 
   networking.hostName = "x1-nhyne";
 

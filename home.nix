@@ -1,22 +1,17 @@
 { pkgs, ... }:
 
 let
-  baseImports = [
-    ./git.nix
-    ./zsh.nix
-    ./vim.nix
-  ];
+  baseImports = [ ./git.nix ./zsh.nix ./vim.nix ];
   goPath = "developer/go";
-  ecrlogin = pkgs.writeShellScriptBin "ecrlogin" (pkgs.lib.fileContents ./scripts/ecr-login.sh);
+  ecrlogin = pkgs.writeShellScriptBin "ecrlogin"
+    (pkgs.lib.fileContents ./scripts/ecr-login.sh);
 
 in {
   programs.home-manager.enable = true;
 
   imports = baseImports;
 
-  home.sessionVariables = {
-    EDITOR = "vim";
-  };
+  home.sessionVariables = { EDITOR = "vim"; };
 
   programs.go = {
     enable = true;

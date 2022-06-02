@@ -1,14 +1,9 @@
 { config, lib, pkgs, modulesPath, ... }:
 
-let
-  argocd = pkgs.callPackage ./../argocd.nix {};
-in
-{
+let argocd = pkgs.callPackage ./../argocd.nix { };
+in {
 
-  imports = 
-    [
-      ./common.nix
-    ];
+  imports = [ ./common.nix ];
 
   boot.initrd.luks.devices = {
     root = {
@@ -18,19 +13,18 @@ in
     };
   };
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/65de627d-425b-43b9-8ee8-8def123d79fc";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/65de627d-425b-43b9-8ee8-8def123d79fc";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/7601-C5D1";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/7601-C5D1";
+    fsType = "vfat";
+  };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/e31cfbf9-ba2c-4b98-89d6-08394230ed71"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/e31cfbf9-ba2c-4b98-89d6-08394230ed71"; }];
 
   networking = {
     hostName = "x1-peloton";

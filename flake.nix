@@ -6,50 +6,49 @@
     # https://status.nixos.org/
     #
     # This ensures that we always use the official # cache.
-    nixpkgs.url = "github:nixos/nixpkgs/aa2f845096f72dde4ad0c168eeec387cbd2eae04";
-    nixos-hardware.url = github:NixOS/nixos-hardware/6b4ebea9093c997c5f275c820e679108de4871ab;
-    home-manager.url = "github:nix-community/home-manager/d93d56ab8c1c6aa575854a79b9d2f69d491db7d0";
+    nixpkgs.url =
+      "github:nixos/nixpkgs/aa2f845096f72dde4ad0c168eeec387cbd2eae04";
+    nixos-hardware.url =
+      "github:NixOS/nixos-hardware/6b4ebea9093c997c5f275c820e679108de4871ab";
+    home-manager.url =
+      "github:nix-community/home-manager/d93d56ab8c1c6aa575854a79b9d2f69d491db7d0";
   };
 
   outputs = inputs@{ self, home-manager, nixpkgs, ... }:
     let
       system = "x86_64-linux";
       # Make configuration for any computer I use in my home office.
-      mkHomeMachine = configurationNix: extraModules: nixpkgs.lib.nixosSystem {
-        inherit system;
-        # Arguments to pass to all modules.
-        specialArgs = { inherit system inputs; };
-        modules = ([
-          # System configuration
-          configurationNix
+      mkHomeMachine = configurationNix: extraModules:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          # Arguments to pass to all modules.
+          specialArgs = { inherit system inputs; };
+          modules = ([
+            # System configuration
+            configurationNix
 
-          # Features common to all of my machines
-          ./features/docker.nix
+            # Features common to all of my machines
+            ./features/docker.nix
 
-          # home-manager configuration
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.nhyne = import ./home.nix {
-              inherit inputs system;
-              pkgs = import nixpkgs { inherit system; };
-            };
-          }
-        ] ++ extraModules);
-      };
-    in
-    {
-      nixosConfigurations.server1 = mkHomeMachine
-        ./hosts/server1.nix [];
+            # home-manager configuration
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.nhyne = import ./home.nix {
+                inherit inputs system;
+                pkgs = import nixpkgs { inherit system; };
+              };
+            }
+          ] ++ extraModules);
+        };
+    in {
+      nixosConfigurations.server1 = mkHomeMachine ./hosts/server1.nix [ ];
 
-      nixosConfigurations.x1-nhyne = mkHomeMachine
-        ./hosts/x1-nhyne.nix [];
+      nixosConfigurations.x1-nhyne = mkHomeMachine ./hosts/x1-nhyne.nix [ ];
 
-      nixosConfigurations.nvme = mkHomeMachine
-        ./hosts/nvme.nix [];
+      nixosConfigurations.nvme = mkHomeMachine ./hosts/nvme.nix [ ];
 
-      nixosConfigurations.x1-peloton = mkHomeMachine
-        ./hosts/x1-peloton.nix [];
+      nixosConfigurations.x1-peloton = mkHomeMachine ./hosts/x1-peloton.nix [ ];
     };
 }
