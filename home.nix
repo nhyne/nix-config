@@ -36,7 +36,8 @@ in {
     bandwhich # network ps
     bat
     bottom # better top
-    # dhall
+    buf
+    dhall
     dig
     dust # better du
     ecrlogin
@@ -55,6 +56,7 @@ in {
     magic-wormhole
     minikube
     ncdu
+    nixfmt
     # ocaml
     openjdk
     procs # better ps
@@ -76,6 +78,4 @@ in {
     xclip
     zip
   ];
-# need to limit to linux
-#  services.caffeine.enable = true;
 }
