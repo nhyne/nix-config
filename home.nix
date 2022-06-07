@@ -21,7 +21,7 @@ in {
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
-    nix-direnv.enableFlakes = true;
+#    nix-direnv.enableFlakes = true;
   };
 
   services.gpg-agent.enable = true;
@@ -34,7 +34,7 @@ in {
     buf
     dhall
     dig
-    dust # better du
+    #dust # better du
     ecrlogin
     exa # better ls
     fd # better find
@@ -65,7 +65,8 @@ in {
     shellcheck
     siege
     stern # multi pod logs in k8s
-    telnet
+    # telnet
+    inetutils
     terminator
     unzip
     vlc
