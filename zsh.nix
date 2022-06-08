@@ -13,6 +13,7 @@ let
     pbpaste = "xclip -selection clipboard -o";
     del = "trash";
     nixs = "nix search nixpkgs $@";
+    nixm = "nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/master.tar.gz %@";
   };
 
 in {
