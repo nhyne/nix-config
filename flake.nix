@@ -9,7 +9,7 @@
     nixpkgs.url =
       "github:nixos/nixpkgs/nixos-22.05";
     nixos-hardware.url =
-      "github:NixOS/nixos-hardware/6b4ebea9093c997c5f275c820e679108de4871ab";
+      "github:NixOS/nixos-hardware/master";
     home-manager.url =
       "github:nix-community/home-manager/release-22.05";
   };
