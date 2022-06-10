@@ -48,12 +48,14 @@ in {
     jq
     kubectl
     loc
+    lsof
     magic-wormhole
     minikube
     ncdu
     nixfmt
     # ocaml
     openjdk
+    openssl
     procs # better ps
     ripgrep # faster grep
     rr # debugging tool
