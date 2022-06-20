@@ -7,11 +7,11 @@
     #
     # This ensures that we always use the official # cache.
     nixpkgs.url =
-      "github:nixos/nixpkgs/aa2f845096f72dde4ad0c168eeec387cbd2eae04";
+      "github:nixos/nixpkgs/nixos-22.05";
     nixos-hardware.url =
-      "github:NixOS/nixos-hardware/6b4ebea9093c997c5f275c820e679108de4871ab";
+      "github:NixOS/nixos-hardware/master";
     home-manager.url =
-      "github:nix-community/home-manager/d93d56ab8c1c6aa575854a79b9d2f69d491db7d0";
+      "github:nix-community/home-manager/release-22.05";
   };
 
   outputs = inputs@{ self, home-manager, nixpkgs, ... }:
@@ -46,8 +46,6 @@
       nixosConfigurations.server1 = mkHomeMachine ./hosts/server1.nix [ ];
 
       nixosConfigurations.x1-nhyne = mkHomeMachine ./hosts/x1-nhyne.nix [ ];
-
-      nixosConfigurations.nvme = mkHomeMachine ./hosts/nvme.nix [ ];
 
       nixosConfigurations.x1-peloton = mkHomeMachine ./hosts/x1-peloton.nix [ ];
     };
