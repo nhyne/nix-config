@@ -75,5 +75,15 @@ in {
     # whois
     xclip
     zip
+  
+    # databases
+    # liquidbase
+    cassandra
+    influxdb
+    memcache
+    neo4j
+    prometheus
+    redis
+    rocksdb
   ];
 }
