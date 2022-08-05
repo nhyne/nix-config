@@ -56,6 +56,7 @@ in {
     # ocaml
     openjdk
     openssl
+    podman-compose
     procs # better ps
     ripgrep # faster grep
     rr # debugging tool
