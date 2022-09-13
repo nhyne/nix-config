@@ -8,15 +8,18 @@
     # This ensures that we always use the official # cache.
     nixpkgs.url =
       "github:nixos/nixpkgs/nixos-22.05";
+    nixpkgs-master.url =
+      "github:nixos/nixpkgs/master";
     nixos-hardware.url =
       "github:NixOS/nixos-hardware/master";
     home-manager.url =
       "github:nix-community/home-manager/release-22.05";
   };
 
-  outputs = inputs@{ self, home-manager, nixpkgs, ... }:
+  outputs = inputs@{ self, home-manager, nixpkgs, nixpkgs-master, ... }:
     let
       system = "x86_64-linux";
+      difftastic = nixpkgs-master.legacyPackages.${system}.difftastic;
       # Make configuration for any computer I use in my home office.
       mkHomeMachine = configurationNix: extraModules:
         nixpkgs.lib.nixosSystem {
@@ -38,6 +41,7 @@
               home-manager.users.nhyne = import ./home.nix {
                 inherit inputs system;
                 pkgs = import nixpkgs { inherit system; };
+                difftastic = difftastic;
               };
             }
           ] ++ extraModules);

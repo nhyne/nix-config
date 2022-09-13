@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, difftastic, ... }:
 
 let
   baseImports = [ ./git.nix ./zsh.nix ./vim.nix ];
@@ -34,6 +34,7 @@ in {
     buf
     dhall
     dig
+    difftastic
     #dust # better du
     ecrlogin
     exa # better ls
