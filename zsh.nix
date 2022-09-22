@@ -26,7 +26,7 @@ in {
     oh-my-zsh = {
       enable = true;
       theme = "robbyrussell";
-      plugins = [ "kubectl" "aws" "ruby" ];
+      plugins = [ "kubectl" "aws" ];
     };
     sessionVariables = {
       EDITOR = "vim";
