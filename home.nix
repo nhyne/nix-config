@@ -22,17 +22,14 @@ let
     then
         [
      bandwhich # network ps
-     bottom # better top
      dhall
      difftastic
      #dust # better du
      ecrlogin
-     exa # better ls
      firefox
      gdb
      gnomeExtensions.caffeine
      grex # build regex cli
-     gron # json grep
      magic-wormhole
      ocaml
      openjdk
@@ -78,11 +75,14 @@ in {
   home.packages = with pkgs; [
     awscli2
     bat
+    bottom # better top
     buf
     # dig
+    exa # better ls
     fd # better find
     github-cli
     gnupg
+    gron # json grep
     jq
     kubectl
     loc
