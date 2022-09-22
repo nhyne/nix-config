@@ -26,12 +26,13 @@ in {
     oh-my-zsh = {
       enable = true;
       theme = "robbyrussell";
-      plugins = [ "kubectl" "aws" ];
+      plugins = [ "kubectl" "aws" "ruby" ];
     };
     sessionVariables = {
       EDITOR = "vim";
       SDKMAN_DIR = "$HOME/.sdkman";
-      PATH = "$HOME/.cargo/bin:$HOME/.jenv/bin:$GOBIN:$PATH";
+      PATH = "/etc/profiles/per-user/adam.johnson/bin:/run/current-system/sw/bin/:$PATH";
+      # PATH = "$HOME/.cargo/bin:$HOME/.jenv/bin:$GOBIN:$PATH";
       HISTTIMEFORMAT = "%d/%m/%y %T ";
       #SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=2G -Xmx2G $SBT_OPTS";
     };
@@ -45,10 +46,12 @@ in {
     };
     profileExtra = ''
       if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
       export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
+      export NIX_PATH=$HOME/.nixpkgs/darwin-configuration.nix:$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
       	'';
     initExtraBeforeCompInit = ''
         '';
+      # . "${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh"  
+      # source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
   };
 }

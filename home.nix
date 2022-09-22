@@ -2,8 +2,17 @@
 
 let
   inherit (pkgs.stdenv.hostPlatform) isDarwin;
-  baseImports = [ ./git.nix ./zsh.nix ./vim.nix ];
+  baseImports = [ 
+    ./git.nix 
+    ./zsh.nix 
+    ./vim.nix 
+  ];
   goPath = "developer/go";
+
+ # path:
+
+ # /Users/adam.johnson/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Users/adam.johnson/.cargo/bin:/Users/adam.johnson/.jenv/bin:/Users/adam.johnson/developer/go/bin
+
   # ecrlogin = pkgs.writeShellScriptBin "ecrlogin"
     # (pkgs.lib.fileContents ./scripts/ecr-login.sh);
   # packageOverrides = pkgs: {

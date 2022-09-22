@@ -53,6 +53,7 @@
       darwinConfigurations =
         let
           system = "aarch64-darwin";
+          userName = "adam.johnson";
           mkMacosSystem = darwin.lib.darwinSystem;
           defaultMacosSystem = mkMacosSystem {
             inherit system;
@@ -65,20 +66,20 @@
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.extraSpecialArgs = { 
-                  inherit inputs system; 
-                  };
-                home-manager.users."adam.johnson" = import ./home.nix {
-                  inherit inputs system;
-                  pkgs = import nixpkgs { inherit system; };
-                  # programs.zsh = {
-                  #   enable = true;
-                  #   initExtra = ''
-                  #     export PATH=/etc/profiles/per-user/${userName}/bin:/run/current-system/sw/bin/:$PATH
-                  #   '';
-                  # } // (import ./home/shellcommon.nix { inherit pkgs; });
-                  # home.stateVersion = "21.11";
+                # home-manager.extraSpecialArgs = { 
+                  # inherit inputs system; 
+                  # };
+                home-manager.users.${userName} = import ./home.nix { 
+                  pkgs = nixpkgs.legacyPackages.${system}; 
                 };
+                # home-manager.users.${"adam.johnson"} = { pkgs, ... }: {
+                #   programs.zsh = {
+                #     enable = true;
+                #     initExtra = ''
+                #       export PATH=/etc/profiles/per-user/${userName}/bin:/run/current-system/sw/bin/:$PATH
+                #     '';
+                #   };
+                # };
               }
             ];
           };
