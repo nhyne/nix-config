@@ -26,7 +26,11 @@ in {
     oh-my-zsh = {
       enable = true;
       theme = "robbyrussell";
-      plugins = [ "kubectl" "aws" ];
+      plugins = [ 
+        "kubectl" 
+        "aws" 
+        "kube-ps1"
+      ];
     };
     sessionVariables = {
       EDITOR = "vim";
@@ -35,6 +39,8 @@ in {
       # PATH = "$HOME/.cargo/bin:$HOME/.jenv/bin:$GOBIN:$PATH";
       HISTTIMEFORMAT = "%d/%m/%y %T ";
       #SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=2G -Xmx2G $SBT_OPTS";
+      KUBE_PS1_SYMBOL_ENABLE=false;
+      RPROMPT="$(kube_ps1)";
     };
     history = {
       ignoreSpace = true;
