@@ -26,7 +26,7 @@ in {
     oh-my-zsh = {
       enable = true;
       theme = "robbyrussell";
-      plugins = [ "kubectl" ];
+      plugins = [ "kubectl" "aws" ];
     };
     sessionVariables = {
       EDITOR = "vim";
@@ -49,10 +49,6 @@ in {
       export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
       	'';
     initExtraBeforeCompInit = ''
-      #eval "$(jenv init -)"
-      [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-      source ~/.keys/github_api_token.bash
-      source ~/.peloton_zshrc
         '';
   };
 }

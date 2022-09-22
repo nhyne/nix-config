@@ -14,9 +14,11 @@
       "github:NixOS/nixos-hardware/master";
     home-manager.url =
       "github:nix-community/home-manager/release-22.05";
+
+    darwin.url = "github:lnl7/nix-darwin/master";
   };
 
-  outputs = inputs@{ self, home-manager, nixpkgs, nixpkgs-master, ... }:
+  outputs = inputs@{ self, home-manager, nixpkgs, nixpkgs-master, darwin, ... }:
     let
       system = "x86_64-linux";
       difftastic = nixpkgs-master.legacyPackages.${system}.difftastic;
@@ -46,11 +48,45 @@
             }
           ] ++ extraModules);
         };
+
+          msystem = "aarch64-darwin";
+          mkMacosSystem = darwin.lib.darwinSystem;
+          defaultMacosSystem = mkMacosSystem {
+            system = msystem;
+            specialArgs = {
+              inherit inputs;
+              system = msystem;
+            };
+            modules = [
+              ./systems/darwin.nix
+              home-manager.darwinModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.extraSpecialArgs = { 
+                  inherit inputs; 
+                  system = msystem;
+                  };
+                home-manager.users."adam.johnson" = import ./home.nix {
+                  inherit inputs;
+                  system = msystem;
+                  pkgs = import nixpkgs { system = msystem; };
+                  # programs.zsh = {
+                  #   enable = true;
+                  #   initExtra = ''
+                  #     export PATH=/etc/profiles/per-user/${userName}/bin:/run/current-system/sw/bin/:$PATH
+                  #   '';
+                  # } // (import ./home/shellcommon.nix { inherit pkgs; });
+                  # home.stateVersion = "21.11";
+                };
+              }
+            ];
+          };
     in {
       nixosConfigurations.server1 = mkHomeMachine ./hosts/server1.nix [ ];
 
       nixosConfigurations.x1-nhyne = mkHomeMachine ./hosts/x1-nhyne.nix [ ];
 
-      nixosConfigurations.x1-peloton = mkHomeMachine ./hosts/x1-peloton.nix [ ];
+      mac = defaultMacosSystem;
     };
 }
