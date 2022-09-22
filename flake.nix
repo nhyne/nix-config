@@ -50,13 +50,14 @@
           ] ++ extraModules);
         };
 
-          msystem = "aarch64-darwin";
+      darwinConfigurations =
+        let
+          system = "aarch64-darwin";
           mkMacosSystem = darwin.lib.darwinSystem;
           defaultMacosSystem = mkMacosSystem {
-            system = msystem;
+            inherit system;
             specialArgs = {
-              inherit inputs;
-              system = msystem;
+              inherit inputs system;
             };
             modules = [
               ./systems/darwin.nix
@@ -65,13 +66,11 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = { 
-                  inherit inputs; 
-                  system = msystem;
+                  inherit inputs system; 
                   };
                 home-manager.users."adam.johnson" = import ./home.nix {
-                  inherit inputs;
-                  system = msystem;
-                  pkgs = import nixpkgs { system = msystem; };
+                  inherit inputs system;
+                  pkgs = import nixpkgs { inherit system; };
                   # programs.zsh = {
                   #   enable = true;
                   #   initExtra = ''
@@ -83,11 +82,15 @@
               }
             ];
           };
+        in {
+          COMP-CDJJ7X690W = defaultMacosSystem;
+
+        };
     in {
       nixosConfigurations.server1 = mkHomeMachine ./hosts/server1.nix [ ];
 
       nixosConfigurations.x1-nhyne = mkHomeMachine ./hosts/x1-nhyne.nix [ ];
 
-      mac = defaultMacosSystem;
+      darwinConfigurations = darwinConfigurations;
     };
 }
