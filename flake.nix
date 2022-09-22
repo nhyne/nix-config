@@ -16,6 +16,7 @@
       "github:nix-community/home-manager/release-22.05";
 
     darwin.url = "github:lnl7/nix-darwin/master";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs@{ self, home-manager, nixpkgs, nixpkgs-master, darwin, ... }:
