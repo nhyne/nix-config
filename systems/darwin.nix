@@ -11,10 +11,15 @@
   };
 
   nixpkgs.config.allowBroken = true;
+  nixpkgs.config.allowUnfree = true;
 
   # For home-manager to work.
   users.users."adam.johnson".name = "adam.johnson";
   users.users."adam.johnson".home = "/Users/adam.johnson";
+
+  environment.systemPackages = with pkgs; [
+    vscode
+  ];
 
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
@@ -23,10 +28,6 @@
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
-
-  # Create /etc/bashrc that loads the nix-darwin environment.
-  # programs.zsh.enable = true; # default shell on catalina
-  # programs.fish.enable = true;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog

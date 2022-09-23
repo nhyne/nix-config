@@ -13,8 +13,8 @@ let
 
  # /Users/adam.johnson/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Users/adam.johnson/.cargo/bin:/Users/adam.johnson/.jenv/bin:/Users/adam.johnson/developer/go/bin
 
-  # ecrlogin = pkgs.writeShellScriptBin "ecrlogin"
-    # (pkgs.lib.fileContents ./scripts/ecr-login.sh);
+  ecrlogin = pkgs.writeShellScriptBin "ecrlogin"
+    (pkgs.lib.fileContents ./scripts/ecr-login.sh);
   # packageOverrides = pkgs: {
   #   graphviz = pkgs.graphviz.override { xorg = null; };
   # };
@@ -25,7 +25,6 @@ let
      dhall
      difftastic
      #dust # better du
-     ecrlogin
      firefox
      gdb
      gnomeExtensions.caffeine
@@ -78,6 +77,7 @@ in {
     bottom # better top
     buf
     # dig
+    ecrlogin
     exa # better ls
     fd # better find
     github-cli

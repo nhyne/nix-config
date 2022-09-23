@@ -40,7 +40,7 @@ in {
       HISTTIMEFORMAT = "%d/%m/%y %T ";
       #SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=2G -Xmx2G $SBT_OPTS";
       KUBE_PS1_SYMBOL_ENABLE=false;
-      RPROMPT="$(kube_ps1)";
+      #RPROMPT="$(kube_ps1)";
     };
     history = {
       ignoreSpace = true;
