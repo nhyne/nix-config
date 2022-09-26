@@ -19,6 +19,7 @@
 
   environment.systemPackages = with pkgs; [
     vscode
+    pre-commit
   ];
 
   # Use a custom configuration.nix location.
