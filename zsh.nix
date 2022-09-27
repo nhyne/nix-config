@@ -9,8 +9,8 @@ let
     #  ecrlogin = "$(aws ecr get-login --no-include-email)";
     vi = "nvim";
     vim = "nvim";
-    pbcopy = "xclip -selection clipboard";
-    pbpaste = "xclip -selection clipboard -o";
+#    pbcopy = "xclip -selection clipboard";
+#    pbpaste = "xclip -selection clipboard -o";
     del = "trash";
     nixs = "nix search nixpkgs $@";
     nixm = "nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/master.tar.gz $@";
