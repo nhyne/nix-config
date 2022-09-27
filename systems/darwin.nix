@@ -20,6 +20,7 @@
   environment.systemPackages = with pkgs; [
     vscode
     pre-commit
+    yubikey-manager
   ];
 
   # Use a custom configuration.nix location.
