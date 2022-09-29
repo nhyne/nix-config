@@ -1,6 +1,6 @@
 {
     "max-concurrent-indexers" : 2,
-    "dbpath" : "/var/lib/hound/data",
+    "dbpath" : "/Users/adam.johnson/.hound/data",
     "title" : "Hound",
     "health-check-uri" : "/healthz",
     "vcs-config" : {
@@ -9,43 +9,43 @@
         }
     },
     "repos" : {
-        "sre-k8s" : {
-            "url" : "git@github.com:pelotoncycle/sre-k8s.git",
+        "dd-go" : {
+            "url" : "git@github.com:datadog/dd-go.git",
             "ms-between-poll": 100000,
             "exclude-dot-files": true
         },
-        "ahab-jobs" : {
-            "url" : "git@github.com:pelotoncycle/ahab-v2.git",
+        "dogweb" : {
+            "url" : "git@github.com:datadog/dogweb.git",
             "ms-between-poll": 100000,
             "exclude-dot-files": true
         },
-        "gybe" : {
-            "url" : "git@github.com:pelotoncycle/gybe.git",
+        "architecture" : {
+            "url" : "git@github.com:datadog/architecture.git",
             "ms-between-poll": 100000,
             "exclude-dot-files": true
         },
-        "ahab-data-store" : {
-            "url" : "git@github.com:pelotoncycle/ahab-data-store-operator.git",
+        "dd-source" : {
+            "url" : "git@github.com:datadog/dd-source.git",
             "ms-between-poll": 100000,
             "exclude-dot-files": true
         },
-        "deckhand" : {
-            "url" : "git@github.com:pelotoncycle/deckhand.git",
+        "experimental" : {
+            "url" : "git@github.com:datadog/experimental.git",
             "ms-between-poll": 100000,
             "exclude-dot-files": true
         },
-        "core-eng-common" : {
-            "url" : "git@github.com:pelotoncycle/core-eng-common.git",
+        "k8s-resources" : {
+            "url" : "git@github.com:datadog/k8s-resources.git",
             "ms-between-poll": 100000,
             "exclude-dot-files": true
         },
-        "core-eng-k8s-custom-khchecks" : {
-            "url" : "git@github.com:pelotoncycle/core-eng-k8s-custom-khchecks.git",
+        "images" : {
+            "url" : "git@github.com:datadog/images.git",
             "ms-between-poll": 100000,
             "exclude-dot-files": true
         },
-        "keel" : {
-            "url" : "git@github.com:pelotoncycle/keel.git",
+        "terraform-config" : {
+            "url" : "git@github.com:datadog/terraform-config.git",
             "ms-between-poll": 100000,
             "exclude-dot-files": true
         },

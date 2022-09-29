@@ -18,6 +18,8 @@
   users.users."adam.johnson".home = "/Users/adam.johnson";
 
   environment.systemPackages = with pkgs; [
+    hound
+    mutagen
     vscode
     pre-commit
     yubikey-manager
