@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   shellAliases = {
@@ -16,6 +16,7 @@ let
     nixm = "nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/master.tar.gz $@";
     summ = "paste -sd+ - | bc";
   };
+  fzfConfig = pkgs.writeText "fzf-config" (lib.fileContents ./configs/fzf-config.zsh);
 
 in {
 
@@ -56,6 +57,7 @@ in {
       export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
       export NIX_PATH=$HOME/.nixpkgs/darwin-configuration.nix:$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
       source ~/.dd-zshrc
+      source ${fzfConfig}
       	'';
     initExtraBeforeCompInit = "";
   };
