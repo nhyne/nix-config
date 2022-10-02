@@ -2,8 +2,10 @@
 
 {
   nix = {
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ]; # Enables use of `nix-shell -p ...` etc
-    registry.nixpkgs.flake = inputs.nixpkgs; # Make `nix shell` etc use pinned nixpkgs
+    nixPath =
+      [ "nixpkgs=${inputs.nixpkgs}" ]; # Enables use of `nix-shell -p ...` etc
+    registry.nixpkgs.flake =
+      inputs.nixpkgs; # Make `nix shell` etc use pinned nixpkgs
     extraOptions = ''
       extra-platforms = aarch64-darwin x86_64-darwin
       experimental-features = nix-command flakes

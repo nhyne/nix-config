@@ -1,6 +1,6 @@
 { config, lib, pkgs, modulesPath, ... }:
 
-let 
+let
   argocd = pkgs.callPackage ./../argocd.nix { };
   saml2aws = pkgs.callPackage ./../saml2aws.nix { };
 in {

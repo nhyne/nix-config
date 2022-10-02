@@ -2,51 +2,40 @@
 
 let
   inherit (pkgs.stdenv.hostPlatform) isDarwin;
-  baseImports = [ 
-    ./git.nix 
-    ./zsh.nix 
-    ./vim.nix 
-  ];
+  baseImports = [ ./git.nix ./zsh.nix ./vim.nix ];
   goPath = "developer/go";
-
- # path:
-
- # /Users/adam.johnson/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Users/adam.johnson/.cargo/bin:/Users/adam.johnson/.jenv/bin:/Users/adam.johnson/developer/go/bin
 
   ecrlogin = pkgs.writeShellScriptBin "ecrlogin"
     (pkgs.lib.fileContents ./scripts/ecr-login.sh);
-  # packageOverrides = pkgs: {
-  #   graphviz = pkgs.graphviz.override { xorg = null; };
-  # };
-  linuxPkgs = with pkgs; if !isDarwin
-    then
-        [
-     bandwhich # network ps
-     dhall
-     difftastic
-     #dust # better du
-     firefox
-     gdb
-     gnomeExtensions.caffeine
-     grex # build regex cli
-     magic-wormhole
-     ocaml
-     openjdk
-     openssl
-     podman-compose
-     rr # debugging tool
-     sbt
-     scala
-     scalafix
-     scalafmt
-     siege
-     telnet
-     terminator
-     vlc
-     whois
-     xclip
-        ]
-     else [];
+
+  linuxPkgs = with pkgs;
+    if !isDarwin then [
+      bandwhich # network ps
+      dhall
+      difftastic
+      #dust # better du
+      firefox
+      gdb
+      gnomeExtensions.caffeine
+      grex # build regex cli
+      magic-wormhole
+      ocaml
+      openjdk
+      openssl
+      podman-compose
+      rr # debugging tool
+      sbt
+      scala
+      scalafix
+      scalafmt
+      siege
+      telnet
+      terminator
+      vlc
+      whois
+      xclip
+    ] else
+      [ ];
 
 in {
   programs.home-manager.enable = true;
@@ -66,7 +55,7 @@ in {
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
-#    nix-direnv.enableFlakes = true;
+    #    nix-direnv.enableFlakes = true;
   };
 
   # services.gpg-agent.enable = true;

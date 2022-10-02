@@ -9,14 +9,16 @@ let
     #  ecrlogin = "$(aws ecr get-login --no-include-email)";
     vi = "nvim";
     vim = "nvim";
-#    pbcopy = "xclip -selection clipboard";
-#    pbpaste = "xclip -selection clipboard -o";
+    #    pbcopy = "xclip -selection clipboard";
+    #    pbpaste = "xclip -selection clipboard -o";
     del = "trash";
     nixs = "nix search nixpkgs $@";
-    nixm = "nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/master.tar.gz $@";
+    nixm =
+      "nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/master.tar.gz $@";
     summ = "paste -sd+ - | bc";
   };
-  fzfConfig = pkgs.writeText "fzf-config" (lib.fileContents ./configs/fzf-config.zsh);
+  fzfConfig =
+    pkgs.writeText "fzf-config" (lib.fileContents ./configs/fzf-config.zsh);
 
 in {
 
@@ -28,20 +30,17 @@ in {
     oh-my-zsh = {
       enable = true;
       theme = "robbyrussell";
-      plugins = [ 
-        "kubectl" 
-        "aws" 
-        "kube-ps1"
-      ];
+      plugins = [ "kubectl" "aws" "kube-ps1" ];
     };
     sessionVariables = {
       EDITOR = "vim";
       SDKMAN_DIR = "$HOME/.sdkman";
-      PATH = "/etc/profiles/per-user/adam.johnson/bin:/run/current-system/sw/bin/:$PATH";
+      PATH =
+        "/etc/profiles/per-user/adam.johnson/bin:/run/current-system/sw/bin/:$PATH";
       # PATH = "$HOME/.cargo/bin:$HOME/.jenv/bin:$GOBIN:$PATH";
       HISTTIMEFORMAT = "%d/%m/%y %T ";
       #SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=2G -Xmx2G $SBT_OPTS";
-      KUBE_PS1_SYMBOL_ENABLE=false;
+      KUBE_PS1_SYMBOL_ENABLE = false;
       #RPROMPT="$(kube_ps1)";
     };
     history = {
