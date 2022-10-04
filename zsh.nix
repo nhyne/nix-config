@@ -1,22 +1,25 @@
 { lib, pkgs, ... }:
 
 let
+  inherit (pkgs.stdenv.hostPlatform) isDarwin;
+  linuxClipboard = {
+    pbcopy = "xclip -selection clipboard";
+    pbpaste = "xclip -selection clipboard -o";
+  };
   shellAliases = {
     kubeami = "kubectl config current-context";
     ll = "exa -lah";
     wthr = "curl wttr.in";
     ghpr = "gh pr create";
-    #  ecrlogin = "$(aws ecr get-login --no-include-email)";
+    ecrlogin = "$(aws ecr get-login --no-include-email)";
     vi = "nvim";
     vim = "nvim";
-    #    pbcopy = "xclip -selection clipboard";
-    #    pbpaste = "xclip -selection clipboard -o";
     del = "trash";
     nixs = "nix search nixpkgs $@";
     nixm =
       "nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/master.tar.gz $@";
     summ = "paste -sd+ - | bc";
-  };
+  };# // (if isDarwin then {} else linuxClipboard);
   fzfConfig =
     pkgs.writeText "fzf-config" (lib.fileContents ./configs/fzf-config.zsh);
 

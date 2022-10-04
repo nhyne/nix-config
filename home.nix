@@ -37,6 +37,9 @@ let
     ] else
       [ ];
 
+  username = if isDarwin then "adam.johnson" else "nhyne";
+  homeDir = if isDarwin then "/Users/adam.johnson" else "/home/nhyne";
+
 in {
   programs.home-manager.enable = true;
   home.stateVersion = "22.05";
@@ -44,8 +47,8 @@ in {
   imports = baseImports;
 
   home.sessionVariables = { EDITOR = "vim"; };
-  home.username = "adam.johnson";
-  home.homeDirectory = "/Users/adam.johnson";
+  home.username = username;
+  home.homeDirectory = homeDir;
 
   programs.go = {
     enable = true;
@@ -58,7 +61,7 @@ in {
     #    nix-direnv.enableFlakes = true;
   };
 
-  # services.gpg-agent.enable = true;
+   services.gpg-agent.enable = !isDarwin;
 
   home.packages = with pkgs; [
     awscli2

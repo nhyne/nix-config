@@ -26,13 +26,8 @@
           # Arguments to pass to all modules.
           specialArgs = { inherit system inputs; };
           modules = ([
-            # System configuration
             configurationNix
-
-            # Features common to all of my machines
             ./features/docker.nix
-
-            # home-manager configuration
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -59,29 +54,18 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              # home-manager.extraSpecialArgs = { 
-              # inherit inputs system; 
-              # };
-              home-manager.users.${userName} =
-                import ./home.nix { pkgs = nixpkgs.legacyPackages.${system}; };
-              # home-manager.users.${"adam.johnson"} = { pkgs, ... }: {
-              #   programs.zsh = {
-              #     enable = true;
-              #     initExtra = ''
-              #       export PATH=/etc/profiles/per-user/${userName}/bin:/run/current-system/sw/bin/:$PATH
-              #     '';
-              #   };
-              # };
+              home-manager.users.${userName} = import ./home.nix {
+                pkgs = nixpkgs.legacyPackages.${system};
+#                isWork = true;
+              };
             }
           ];
         };
       in {
         COMP-CDJJ7X690W = defaultMacosSystem;
-
       };
     in {
       nixosConfigurations.server1 = mkHomeMachine ./hosts/server1.nix [ ];
-
       nixosConfigurations.x1-nhyne = mkHomeMachine ./hosts/x1-nhyne.nix [ ];
 
       darwinConfigurations = darwinConfigurations;
