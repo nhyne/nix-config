@@ -23,6 +23,8 @@ let
   fzfConfig =
     pkgs.writeText "fzf-config" (lib.fileContents ./configs/fzf-config.zsh);
 
+  ps1Config = pkgs.writeText "kube-ps1.sh" (pkgs.callPackage ./kube-ps1.nix {}).ps1;
+
   macSession = {
     PATH =
       "/etc/profiles/per-user/adam.johnson/bin:/run/current-system/sw/bin/:$PATH";
@@ -38,7 +40,7 @@ in {
     oh-my-zsh = {
       enable = true;
       theme = "robbyrussell";
-      plugins = [ "kubectl" "aws" "kube-ps1" ];
+      plugins = [ "kubectl" "aws" ];
     };
     sessionVariables = {
       EDITOR = "vim";
@@ -47,7 +49,6 @@ in {
       HISTTIMEFORMAT = "%d/%m/%y %T ";
       #SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=2G -Xmx2G $SBT_OPTS";
       KUBE_PS1_SYMBOL_ENABLE = false;
-      #RPROMPT="$(kube_ps1)";
     } // (if isDarwin then macSession else { });
     history = {
       ignoreSpace = true;
@@ -63,6 +64,8 @@ in {
       export NIX_PATH=$HOME/.nixpkgs/darwin-configuration.nix:$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
       source ~/.dd-zshrc
       source ${fzfConfig}
+      source ${ps1Config}
+      export RPROMPT=$(kube_ps1)
       	'';
   };
 }

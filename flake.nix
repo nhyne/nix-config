@@ -13,9 +13,14 @@
 
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    kube-ps1 = {
+        url = "github:jonmosco/kube-ps1/v0.7.0";
+        flake = false;
+      };
   };
 
-  outputs = inputs@{ self, home-manager, nixpkgs, nixpkgs-master, darwin, ... }:
+  outputs = inputs@{ self, home-manager, nixpkgs, nixpkgs-master, darwin, kube-ps1, ... }:
     let
       system = "x86_64-linux";
       difftastic = nixpkgs-master.legacyPackages.${system}.difftastic;
