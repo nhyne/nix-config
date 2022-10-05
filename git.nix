@@ -46,6 +46,8 @@
         "!f() { git diff-tree --no-commit-id --name-only -r $1; }; f"; # shows files modified in given commit
       dwc =
         "!f() { git diff --word-diff --no-commit-id --ignore-space-change -r $1^ $1; }; f"; # shows the line by line changes made by a single commit
+      diffc =
+        "!f() { git diff $1^ $1; }; f"; # shows the line by line changes made by a single commit
       blm = "blame -c -w --date=short";
       fls =
         "!f() { git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --all --full-history -- $1; }; f"; # searches code base for a file as a given path, can include deleted files

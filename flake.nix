@@ -6,17 +6,16 @@
     # https://status.nixos.org/
     #
     # This ensures that we always use the official # cache.
-    nixpkgs.url =
-      "github:nixos/nixpkgs/nixos-22.05";
-    nixpkgs-master.url =
-      "github:nixos/nixpkgs/master";
-    nixos-hardware.url =
-      "github:NixOS/nixos-hardware/master";
-    home-manager.url =
-      "github:nix-community/home-manager/release-22.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    home-manager.url = "github:nix-community/home-manager/release-22.05";
+
+    darwin.url = "github:lnl7/nix-darwin/master";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, home-manager, nixpkgs, nixpkgs-master, ... }:
+  outputs = inputs@{ self, home-manager, nixpkgs, nixpkgs-master, darwin, ... }:
     let
       system = "x86_64-linux";
       difftastic = nixpkgs-master.legacyPackages.${system}.difftastic;
@@ -27,13 +26,8 @@
           # Arguments to pass to all modules.
           specialArgs = { inherit system inputs; };
           modules = ([
-            # System configuration
             configurationNix
-
-            # Features common to all of my machines
             ./features/docker.nix
-
-            # home-manager configuration
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -46,11 +40,30 @@
             }
           ] ++ extraModules);
         };
+
+      darwinConfigurations = let
+        system = "aarch64-darwin";
+        userName = "adam.johnson";
+        mkMacosSystem = darwin.lib.darwinSystem;
+        defaultMacosSystem = mkMacosSystem {
+          inherit system;
+          specialArgs = { inherit inputs system; };
+          modules = [
+            ./systems/darwin.nix
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.${userName} =
+                import ./home.nix { pkgs = nixpkgs.legacyPackages.${system}; };
+            }
+          ];
+        };
+      in { COMP-CDJJ7X690W = defaultMacosSystem; };
     in {
       nixosConfigurations.server1 = mkHomeMachine ./hosts/server1.nix [ ];
-
       nixosConfigurations.x1-nhyne = mkHomeMachine ./hosts/x1-nhyne.nix [ ];
 
-      nixosConfigurations.x1-peloton = mkHomeMachine ./hosts/x1-peloton.nix [ ];
+      darwinConfigurations = darwinConfigurations;
     };
 }
