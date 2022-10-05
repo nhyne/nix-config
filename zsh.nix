@@ -19,12 +19,13 @@ let
     nixm =
       "nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/master.tar.gz $@";
     summ = "paste -sd+ - | bc";
-  };# // (if isDarwin then {} else linuxClipboard);
+  } // (if isDarwin then { } else linuxClipboard);
   fzfConfig =
     pkgs.writeText "fzf-config" (lib.fileContents ./configs/fzf-config.zsh);
 
   macSession = {
-    PATH = "/etc/profiles/per-user/adam.johnson/bin:/run/current-system/sw/bin/:$PATH";
+    PATH =
+      "/etc/profiles/per-user/adam.johnson/bin:/run/current-system/sw/bin/:$PATH";
   };
 
 in {
@@ -47,7 +48,7 @@ in {
       #SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=2G -Xmx2G $SBT_OPTS";
       KUBE_PS1_SYMBOL_ENABLE = false;
       #RPROMPT="$(kube_ps1)";
-    } // (if isDarwin then macSession else {});
+    } // (if isDarwin then macSession else { });
     history = {
       ignoreSpace = true;
       ignoreDups = true;

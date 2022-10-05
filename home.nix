@@ -60,35 +60,36 @@ in {
     #    nix-direnv.enableFlakes = true;
   };
 
-   services.gpg-agent.enable = !isDarwin;
+  services.gpg-agent.enable = !isDarwin;
 
-  home.packages = with pkgs; [
-    awscli2
-    bat
-    bottom # better top
-    buf
-    # dig
-    ecrlogin
-    exa # better ls
-    fd # better find
-    fzf
-    github-cli
-    gnupg
-    gron # json grep
-    jq
-    kubectl
-    loc
-    lsof
-    minikube
-    ncdu
-    nixfmt
-    procs # better ps
-    ripgrep # faster grep
-    sd # sed
-    shellcheck
-    stern # multi pod logs in k8s
-    inetutils
-    unzip
-    zip
-  ] ++ linuxPkgs;
+  home.packages = with pkgs;
+    [
+      awscli2
+      bat
+      bottom # better top
+      buf
+      # dig
+      ecrlogin
+      exa # better ls
+      fd # better find
+      fzf
+      github-cli
+      gnupg
+      gron # json grep
+      jq
+      kubectl
+      loc
+      lsof
+      minikube
+      ncdu
+      nixfmt
+      procs # better ps
+      ripgrep # faster grep
+      sd # sed
+      shellcheck
+      stern # multi pod logs in k8s
+      inetutils
+      unzip
+      zip
+    ] ++ linuxPkgs;
 }

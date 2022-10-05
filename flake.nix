@@ -54,16 +54,12 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.${userName} = import ./home.nix {
-                pkgs = nixpkgs.legacyPackages.${system};
-#                isWork = true;
-              };
+              home-manager.users.${userName} =
+                import ./home.nix { pkgs = nixpkgs.legacyPackages.${system}; };
             }
           ];
         };
-      in {
-        COMP-CDJJ7X690W = defaultMacosSystem;
-      };
+      in { COMP-CDJJ7X690W = defaultMacosSystem; };
     in {
       nixosConfigurations.server1 = mkHomeMachine ./hosts/server1.nix [ ];
       nixosConfigurations.x1-nhyne = mkHomeMachine ./hosts/x1-nhyne.nix [ ];
