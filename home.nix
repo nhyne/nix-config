@@ -29,10 +29,9 @@ let
       scalafix
       scalafmt
       siege
-      telnet
+      inetutils
       terminator
       vlc
-      whois
       xclip
     ] else
       [ ];
@@ -72,6 +71,7 @@ in {
     ecrlogin
     exa # better ls
     fd # better find
+    fzf
     github-cli
     gnupg
     gron # json grep
@@ -90,5 +90,5 @@ in {
     inetutils
     unzip
     zip
-  ];
+  ] ++ linuxPkgs;
 }
