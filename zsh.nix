@@ -23,6 +23,10 @@ let
   fzfConfig =
     pkgs.writeText "fzf-config" (lib.fileContents ./configs/fzf-config.zsh);
 
+  macSession = {
+    PATH = "/etc/profiles/per-user/adam.johnson/bin:/run/current-system/sw/bin/:$PATH";
+  };
+
 in {
 
   programs.zsh = {
@@ -38,14 +42,12 @@ in {
     sessionVariables = {
       EDITOR = "vim";
       SDKMAN_DIR = "$HOME/.sdkman";
-      PATH =
-        "/etc/profiles/per-user/adam.johnson/bin:/run/current-system/sw/bin/:$PATH";
       # PATH = "$HOME/.cargo/bin:$HOME/.jenv/bin:$GOBIN:$PATH";
       HISTTIMEFORMAT = "%d/%m/%y %T ";
       #SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=2G -Xmx2G $SBT_OPTS";
       KUBE_PS1_SYMBOL_ENABLE = false;
       #RPROMPT="$(kube_ps1)";
-    };
+    } // (if isDarwin then macSession else {});
     history = {
       ignoreSpace = true;
       ignoreDups = true;
