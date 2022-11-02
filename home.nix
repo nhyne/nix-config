@@ -89,6 +89,7 @@ in {
       shellcheck
       stern # multi pod logs in k8s
       inetutils
+      unison
       unzip
       zip
     ] ++ linuxPkgs;
