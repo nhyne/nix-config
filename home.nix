@@ -77,6 +77,7 @@ in {
       gnupg
       gron # json grep
       jq
+      just
       kubectl
       loc
       lsof
