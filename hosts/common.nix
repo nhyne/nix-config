@@ -72,7 +72,7 @@ in {
     support32Bit = true;
   };
   nixpkgs.config.pulseaudio = true;
-  users.extraUsers.nhyne.extraGroups = [ "audio" ];
+  users.extraUsers.nhyne.extraGroups = [ "audio" "docker" ];
 
   nixpkgs.config.allowUnfree = true;
 

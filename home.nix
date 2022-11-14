@@ -13,6 +13,7 @@ let
       bandwhich # network ps
       dhall
       difftastic
+      dnsutils
       #dust # better du
       firefox
       gdb
