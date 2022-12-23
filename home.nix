@@ -19,6 +19,7 @@ let
       gdb
       gnomeExtensions.caffeine
       grex # build regex cli
+      inetutils
       magic-wormhole
       ocaml
       openjdk
@@ -30,7 +31,7 @@ let
       scalafix
       scalafmt
       siege
-      inetutils
+      thunderbird
       terminator
       vlc
       xclip
