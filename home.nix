@@ -43,12 +43,14 @@ let
 
 in {
   programs.home-manager.enable = true;
+  programs.zsh.enable = true;
   home.stateVersion = "22.05";
 
   imports = baseImports;
 
   home.sessionVariables = { EDITOR = "vim"; };
   home.username = username;
+  users.${username}.shell = pkgs.zsh;
   home.homeDirectory = homeDir;
 
   programs.go = {
@@ -81,6 +83,7 @@ in {
       jq
       just
       kubectl
+      kubectx
       loc
       lsof
       minikube
