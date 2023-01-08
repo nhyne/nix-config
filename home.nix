@@ -50,7 +50,6 @@ in {
 
   home.sessionVariables = { EDITOR = "vim"; };
   home.username = username;
-  users.${username}.shell = pkgs.zsh;
   home.homeDirectory = homeDir;
 
   programs.go = {
