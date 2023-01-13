@@ -32,7 +32,6 @@ let
       scalafmt
       siege
       thunderbird
-      terminator
       vlc
       xclip
     ] else
