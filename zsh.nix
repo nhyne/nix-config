@@ -18,6 +18,7 @@ let
     nixm =
       "nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/master.tar.gz $@";
     summ = "paste -sd+ - | bc";
+    history = "history -f";
   } // (if isDarwin then { } else linuxClipboard);
   fzfConfig =
     pkgs.writeText "fzf-config" (lib.fileContents ./configs/fzf-config.zsh);
