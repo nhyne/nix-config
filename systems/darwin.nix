@@ -10,6 +10,10 @@
       extra-platforms = aarch64-darwin x86_64-darwin
       experimental-features = nix-command flakes
     '';
+    settings = {
+      extra-trusted-substituters = [ "https://cache.floxdev.com" ];
+      extra-trusted-public-keys = [ "flox-store-public-0:8c/B+kjIaQ+BloCmNkRUKwaVPFWkriSAd0JJvuDu4F0=" ];
+    };
   };
 
   nixpkgs.config.allowBroken = true;
