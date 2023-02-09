@@ -95,6 +95,7 @@ in {
       inetutils
       unison
       unzip
+      vector # tool to send things to DD easily
       zip
     ] ++ linuxPkgs;
 }
