@@ -31,6 +31,7 @@ let
       scalafix
       scalafmt
       siege
+      terminator
       thunderbird
       vlc
       xclip
@@ -85,6 +86,7 @@ in {
       loc
       lsof
       minikube
+      nodejs
       ncdu
       nixfmt
       procs # better ps
