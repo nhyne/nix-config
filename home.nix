@@ -21,10 +21,9 @@ let
       grex # build regex cli
       inetutils
       magic-wormhole
-      ocaml
       openjdk
       openssl
-      podman-compose
+      # podman-compose
       rr # debugging tool
       sbt
       scala
@@ -95,7 +94,7 @@ in {
       shellcheck
       stern # multi pod logs in k8s
       inetutils
-      unison
+      unison-ucm
       unzip
       vector # tool to send things to DD easily
       zip
