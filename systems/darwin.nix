@@ -27,7 +27,7 @@
     hound
     #mutagen
     vscode
-    pre-commit
+    #pre-commit
     yubikey-manager
   ];
 
