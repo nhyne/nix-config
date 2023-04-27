@@ -90,6 +90,7 @@ in {
       nixfmt
       procs # better ps
       ripgrep # faster grep
+      rustup
       sd # sed
       shellcheck
       stern # multi pod logs in k8s
