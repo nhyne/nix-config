@@ -80,6 +80,7 @@ in {
       gron # json grep
       jq
       just
+      k9s
       kubectl
       kubectx
       loc
