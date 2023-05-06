@@ -66,6 +66,7 @@ in {
 
   home.packages = with pkgs;
     [
+      atuin
       awscli2
       bat
       bottom # better top
