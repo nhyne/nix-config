@@ -35,9 +35,7 @@ let
       vlc
       xclip
     ] else
-      [ 
-        crane
-      ];
+      [ crane ];
 
   username = if isDarwin then "adam.johnson" else "nhyne";
   homeDir = if isDarwin then "/Users/adam.johnson" else "/home/nhyne";
