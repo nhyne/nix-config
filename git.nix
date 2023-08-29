@@ -9,6 +9,7 @@
     aliases = {
       c = "checkout";
       cm = "commit";
+      mc = "diff --name-only --diff-filter=U --relative";
       cmn = "commit --no-verify";
       a = "add";
       f = "fetch";
@@ -17,6 +18,7 @@
       s = "status -sb"; # short status
       u =
         "reset HEAD --"; # unstages a file or directory from a commit after it has been added
+      pu = "push -u origin $(git rev-parse --abbrev-ref HEAD)";
       unch = "update-index --assume-unchanged"; # mark file unchanged locally
       amd =
         "commit --amend"; # allows you to edit commit message for previous commit
