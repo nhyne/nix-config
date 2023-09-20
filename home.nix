@@ -98,6 +98,7 @@ in {
       shellcheck
       stern # multi pod logs in k8s
       inetutils
+      rustup
       unison-ucm
       unzip
       vector # tool to send things to DD easily
