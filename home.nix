@@ -77,6 +77,7 @@ in {
       fd # better find
       fzf
       github-cli
+      git-machete
       gnupg
       gron # json grep
       jq
