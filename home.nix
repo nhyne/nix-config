@@ -91,7 +91,7 @@ in {
       nodejs
       ncdu
       nixfmt
-      obsidian
+      #obsidian
       procs # better ps
       ripgrep # faster grep
       rustup
