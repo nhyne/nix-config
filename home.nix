@@ -43,7 +43,7 @@ let
 in {
   programs.home-manager.enable = true;
   programs.zsh.enable = true;
-  home.stateVersion = "22.05";
+  home.stateVersion = "23.11";
 
   imports = baseImports;
 
@@ -73,7 +73,7 @@ in {
       buf
       # dig
       ecrlogin
-      exa # better ls
+#      exa # better ls
       fd # better find
       fzf
       github-cli
@@ -91,7 +91,7 @@ in {
       nodejs
       ncdu
       nixfmt
-      obsidian
+#      obsidian
       procs # better ps
       ripgrep # faster grep
       rustup
@@ -102,7 +102,7 @@ in {
       rustup
       unison-ucm
       unzip
-      vector # tool to send things to DD easily
+#      vector # tool to send things to DD easily
       zip
     ] ++ linuxPkgs;
 }

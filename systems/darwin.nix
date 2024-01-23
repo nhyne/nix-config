@@ -1,24 +1,24 @@
 { config, pkgs, inputs, system, ... }:
 
 {
-#  nix = {
-#    nixPath =
-#      [ "nixpkgs=${inputs.nixpkgs}" ]; # Enables use of `nix-shell -p ...` etc
-#    registry.nixpkgs.flake =
-#      inputs.nixpkgs; # Make `nix shell` etc use pinned nixpkgs
-#    extraOptions = ''
-#      extra-platforms = aarch64-darwin x86_64-darwin
-#      experimental-features = nix-command flakes
-#    '';
-#    settings = {
-#      extra-trusted-substituters = [ "https://cache.floxdev.com" ];
-#      extra-trusted-public-keys =
-#        [ "flox-store-public-0:8c/B+kjIaQ+BloCmNkRUKwaVPFWkriSAd0JJvuDu4F0=" ];
-#    };
-#  };
+  nix = {
+    nixPath =
+      [ "nixpkgs=${inputs.nixpkgs}" ]; # Enables use of `nix-shell -p ...` etc
+    registry.nixpkgs.flake =
+      inputs.nixpkgs; # Make `nix shell` etc use pinned nixpkgs
+    extraOptions = ''
+      extra-platforms = aarch64-darwin x86_64-darwin
+      experimental-features = nix-command flakes
+    '';
+    settings = {
+      extra-trusted-substituters = [ "https://cache.floxdev.com" ];
+      extra-trusted-public-keys =
+        [ "flox-store-public-0:8c/B+kjIaQ+BloCmNkRUKwaVPFWkriSAd0JJvuDu4F0=" ];
+    };
+  };
 #
-#  nixpkgs.config.allowBroken = true;
-#  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowBroken = true;
+  nixpkgs.config.allowUnfree = true;
 #
   # For home-manager to work.
   users.users."adam.johnson".name = "adam.johnson";

@@ -6,10 +6,10 @@
     # https://status.nixos.org/
     #
     # This ensures that we always use the official # cache.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    home-manager.url = "github:nix-community/home-manager/release-22.11";
+    home-manager.url = "github:nix-community/home-manager/release-23.11";
 
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -44,19 +44,18 @@
       darwinConfigurations = let
         system = "aarch64-darwin";
         userName = "adam.johnson";
-        defaultMacosSystem = self.nixos-flake.lib.mkMacosSystem {
-#          inherit system;
-          nixpkgs.hostPlatform = system;
-#          specialArgs = { inherit inputs system; };
+        defaultMacosSystem = darwin.lib.darwinSystem {
+          inherit system;
+          specialArgs = { inherit inputs system; };
           modules = [
             ./systems/darwin.nix
-#            home-manager.darwinModules.home-manager
-#            {
-#              home-manager.useGlobalPkgs = true;
-#              home-manager.useUserPackages = true;
-#              home-manager.users.${userName} =
-#                import ./home.nix { pkgs = nixpkgs.legacyPackages.${system}; };
-#            }
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.${userName} =
+                import ./home.nix { pkgs = nixpkgs.legacyPackages.${system}; };
+            }
           ];
         };
       in { COMP-CDJJ7X690W = defaultMacosSystem; };
