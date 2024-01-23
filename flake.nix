@@ -44,19 +44,19 @@
       darwinConfigurations = let
         system = "aarch64-darwin";
         userName = "adam.johnson";
-        mkMacosSystem = darwin.lib.darwinSystem;
-        defaultMacosSystem = mkMacosSystem {
-          inherit system;
-          specialArgs = { inherit inputs system; };
+        defaultMacosSystem = self.nixos-flake.lib.mkMacosSystem {
+#          inherit system;
+          nixpkgs.hostPlatform = system;
+#          specialArgs = { inherit inputs system; };
           modules = [
             ./systems/darwin.nix
-            home-manager.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.${userName} =
-                import ./home.nix { pkgs = nixpkgs.legacyPackages.${system}; };
-            }
+#            home-manager.darwinModules.home-manager
+#            {
+#              home-manager.useGlobalPkgs = true;
+#              home-manager.useUserPackages = true;
+#              home-manager.users.${userName} =
+#                import ./home.nix { pkgs = nixpkgs.legacyPackages.${system}; };
+#            }
           ];
         };
       in { COMP-CDJJ7X690W = defaultMacosSystem; };
