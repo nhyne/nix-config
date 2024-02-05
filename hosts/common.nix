@@ -65,7 +65,7 @@ in {
   networking.networkmanager.enable = true;
 
   # high-resolution display
-  hardware.video.hidpi.enable = lib.mkDefault true;
+  #hardware.video.hidpi.enable = lib.mkDefault true;
 
   hardware.pulseaudio = {
     enable = true;
@@ -86,6 +86,7 @@ in {
     trustedUsers = [ "root" "nhyne" ];
   };
 
+  programs.zsh.enable = true;
   users.mutableUsers = true;
   users.users.nhyne = {
     isNormalUser = true;

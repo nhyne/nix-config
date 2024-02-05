@@ -21,6 +21,7 @@ let
       grex # build regex cli
       inetutils
       magic-wormhole
+      mitmproxy
       openjdk
       openssl
       # podman-compose
