@@ -73,6 +73,7 @@ in {
       bottom # better top
       buf
       # dig
+      difftastic
       ecrlogin
 #      exa # better ls
       fd # better find
