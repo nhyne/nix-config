@@ -65,6 +65,8 @@
       #ss = "!f() { git stash save ${@:1}; }; f"; #stashes changes with a saved message, message does not have to be put into quotes
       #find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'";
       #ssa = "!f() { git stash save -u ${@:1}; }; f"; #stashes everything with a message, message does not have to be put into quotes
+      wip = "for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads";
+      fzs = "!f() { git branch --sort=-committerdate --format='%(refname:short)' | fzf | xargs git switch; } ; f";
     };
     ignores = [
       ".idea"
