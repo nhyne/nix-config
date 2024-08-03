@@ -44,9 +44,14 @@ let
 in {
   programs.home-manager.enable = true;
   programs.zsh.enable = true;
-  home.stateVersion = "23.11";
+  home.stateVersion = "23.05";
 
   imports = baseImports;
+
+  nix.package = pkgs.nix;
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
 
   home.sessionVariables = { EDITOR = "vim"; };
   home.username = username;
