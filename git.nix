@@ -28,6 +28,7 @@
         "!f() { git clean -fd; git reset --hard; }; f"; # undoes all changes and removes all added files, resets to most recent commit
       patch = "add --patch"; # adds modifications to files in groups
       dw = "diff --word-diff --ignore-space-change"; # in-line git diff
+      bl = "branch --sort=-committerdate";
       b = "branch";
       cleanup =
         "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d";
