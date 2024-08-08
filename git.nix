@@ -95,7 +95,7 @@
       diff."ansible-vault".textconv = "ansible-vault view";
       url = {
         "git@github.com:" = { insteadOf = "https://github.com/"; };
-        "git://" = { insteadOf = "https://"; };
+        #"git://" = { insteadOf = "https://"; };
       };
     };
   };
