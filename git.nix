@@ -37,7 +37,7 @@
       sq =
         "!f() { git reset --soft HEAD^$1 && git commit; }; f"; # should automatically squash the last N commits into a single one with new commit message
       sl = "stash list"; # lists stashes
-      sp = "stash pop"; # pops top stash and applies
+      sp = "stash apply"; # pops top stash and applies
       l =
         "log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit";
       lg =
