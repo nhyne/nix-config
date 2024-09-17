@@ -8,7 +8,7 @@ let
   };
   shellAliases = {
     kubeami = "kubectl config current-context";
-    ll = "exa -lah";
+    ll = "ls -lah";
     wthr = "curl wttr.in";
     ghpr = "gh pr create";
     vi = "nvim";
