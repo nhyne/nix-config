@@ -16,6 +16,7 @@ let
       dnsutils
       #dust # better du
       firefox
+      gcc
       gdb
       gnomeExtensions.caffeine
       grex # build regex cli
@@ -26,6 +27,7 @@ let
       openssl
       # podman-compose
       rr # debugging tool
+      rustup
       sbt
       scala
       scalafix
@@ -101,12 +103,10 @@ in {
 #      obsidian
       procs # better ps
       ripgrep # faster grep
-      rustup
       sd # sed
       shellcheck
       stern # multi pod logs in k8s
       inetutils
-      rustup
       unison-ucm
       unzip
 #      vector # tool to send things to DD easily
