@@ -62,6 +62,7 @@ in {
   programs.go = {
     enable = true;
     inherit goPath;
+    package = pkgs.go_1_23;
     goBin = "${goPath}/bin";
   };
   programs.direnv = {
