@@ -16,6 +16,7 @@ let
       dnsutils
       #dust # better du
       firefox
+      gcc
       gdb
       gnomeExtensions.caffeine
       grex # build regex cli
@@ -26,6 +27,7 @@ let
       openssl
       # podman-compose
       rr # debugging tool
+      rustup
       sbt
       scala
       scalafix
@@ -60,6 +62,7 @@ in {
   programs.go = {
     enable = true;
     inherit goPath;
+    package = pkgs.go_1_23;
     goBin = "${goPath}/bin";
   };
   programs.direnv = {
@@ -101,12 +104,10 @@ in {
 #      obsidian
       procs # better ps
       ripgrep # faster grep
-      rustup
       sd # sed
       shellcheck
       stern # multi pod logs in k8s
       inetutils
-      rustup
       unison-ucm
       unzip
 #      vector # tool to send things to DD easily
