@@ -85,6 +85,7 @@
     ];
     extraConfig = {
       core.editor = "nvim";
+      core.untrackedCache=true;
       #credential.helper = "store --file ~/.git-credentials";
       pull.rebase = "false";
       branch.autosetuprebase = "always";
