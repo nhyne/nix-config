@@ -46,18 +46,20 @@ let
 in {
   programs.home-manager.enable = true;
   programs.zsh.enable = true;
-  home.stateVersion = "23.05";
+  home.stateVersion = "24.11";
 
   imports = baseImports;
 
-  nix.package = pkgs.nix;
+#  nix.package = pkgs.nix;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
 
+#  home-manager.users.${username}.nix.package = pkgs.lib.mkDefault pkgs.nix;
+#  nix.package = pkgs.lib.mkForce pkgs.nix;
   home.sessionVariables = { EDITOR = "vim"; };
   home.username = username;
-  home.homeDirectory = homeDir;
+#  home.homeDirectory = homeDir;
 
   programs.go = {
     enable = true;

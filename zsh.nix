@@ -54,8 +54,8 @@ in {
       ignoreDups = true;
       extended = true;
       share = false;
-      size = 100000;
-      save = 100000;
+      size = 1000000;
+      save = 1000000;
     };
     initExtra = ''
       if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

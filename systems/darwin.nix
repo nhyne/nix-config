@@ -16,10 +16,10 @@
         [ "flox-store-public-0:8c/B+kjIaQ+BloCmNkRUKwaVPFWkriSAd0JJvuDu4F0=" ];
     };
   };
-#
+
   nixpkgs.config.allowBroken = true;
   nixpkgs.config.allowUnfree = true;
-#
+
   # For home-manager to work.
   users.users."adam.johnson".name = "adam.johnson";
   users.users."adam.johnson".home = "/Users/adam.johnson";
