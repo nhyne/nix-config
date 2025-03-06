@@ -71,6 +71,17 @@ in {
     #    nix-direnv.enableFlakes = true;
   };
 
+  programs.atuin = {
+    enable = true;
+    enableZshIntegration = true;
+    flags = ["--disable-up-arrow"];
+    settings = {
+      auto_sync = false;
+      sync_address = "nowhere";
+    }
+    ;
+  };
+
   services.gpg-agent.enable = !isDarwin;
 
   home.packages = with pkgs;
