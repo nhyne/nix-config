@@ -86,6 +86,7 @@
     extraConfig = {
       core.editor = "nvim";
       core.untrackedCache=true;
+      core.fsmonitor = true;
       core.autocrlf = true;
       #credential.helper = "store --file ~/.git-credentials";
       pull.rebase = "false";
