@@ -26,6 +26,7 @@
           # Arguments to pass to all modules.
           specialArgs = { inherit system inputs; };
           modules = ([
+            (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
             configurationNix
             ./features/docker.nix
             home-manager.nixosModules.home-manager
