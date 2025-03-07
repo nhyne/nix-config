@@ -56,7 +56,7 @@ in {
   '';
 
 #  home-manager.users.${username}.nix.package = pkgs.lib.mkDefault pkgs.nix;
-#  nix.package = pkgs.lib.mkForce pkgs.nix;
+  nix.package = pkgs.lib.mkForce pkgs.nix;
   home.sessionVariables = { EDITOR = "vim"; };
   home.username = username;
   home.homeDirectory = homeDir;
