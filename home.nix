@@ -50,7 +50,7 @@ in {
 
   imports = baseImports;
 
-#  nix.package = pkgs.nix;
+  nix.package = pkgs.nix;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
@@ -59,7 +59,7 @@ in {
 #  nix.package = pkgs.lib.mkForce pkgs.nix;
   home.sessionVariables = { EDITOR = "vim"; };
   home.username = username;
-#  home.homeDirectory = homeDir;
+  home.homeDirectory = homeDir;
 
   programs.go = {
     enable = true;
