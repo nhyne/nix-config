@@ -1,4 +1,11 @@
-{ config, lib, pkgs, modulesPath, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}:
+{
 
   imports = [ ./common.nix ];
 
@@ -20,28 +27,22 @@
     fsType = "vfat";
   };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/82db1de2-0d51-4308-a224-7e341b6fcbeb"; }];
+  swapDevices = [ { device = "/dev/disk/by-uuid/82db1de2-0d51-4308-a224-7e341b6fcbeb"; } ];
 
   networking.hostName = "x1-nhyne";
 
   nix.settings.extra-trusted-substituters = [ "https://cache.floxdev.com" ];
-  nix.settings.extra-trusted-public-keys =
-    [ "flox-store-public-0:8c/B+kjIaQ+BloCmNkRUKwaVPFWkriSAd0JJvuDu4F0=" ];
+  nix.settings.extra-trusted-public-keys = [
+    "flox-store-public-0:8c/B+kjIaQ+BloCmNkRUKwaVPFWkriSAd0JJvuDu4F0="
+  ];
 
-  services.hound = {
-    enable = true;
-    config = (pkgs.lib.fileContents ./../configs/hound.json);
-  };
-
-  environment.systemPackages = with pkgs;
-    [
-      # bazel
-      # idris2
-      # python # needed for bazel
-      # rustup
-      unison-ucm
-    ];
+  environment.systemPackages = with pkgs; [
+    # bazel
+    # idris2
+    # python # needed for bazel
+    # rustup
+    unison-ucm
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -49,5 +50,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.11"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 }
