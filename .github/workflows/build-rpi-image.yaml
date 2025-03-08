@@ -9,7 +9,7 @@ jobs:
           extra_nix_config: |
             system = aarch64-linux
       - name: Build
-        run: nix build .#nixosConfigurations.raspi.config.system.build.sdImage
+        run: nix build --system aarch64-linux .#nixosConfigurations.raspi.config.system.build.sdImage
 on:
   push:
     branches:
