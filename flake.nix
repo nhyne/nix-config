@@ -29,7 +29,7 @@
       #      difftastic = nixpkgs-master.legacyPackages.${system}.difftastic;
       #      pkgs = (import nixpkgs { system = "x86_64-linux"; crossSystem = "aarch64-linux"; });
       pkgs = import nixpkgs {
-#        system = "x86_64-linux";
+        system = "x86_64-linux";
         crossSystem = {
           config = "aarch64-linux";
         };
