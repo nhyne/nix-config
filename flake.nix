@@ -25,29 +25,39 @@
       ...
     }:
     let
-      system = "x86_64-linux";
-      difftastic = nixpkgs-master.legacyPackages.${system}.difftastic;
+      #      system = "aarch64-linux";
+      #      difftastic = nixpkgs-master.legacyPackages.${system}.difftastic;
+      #      pkgs = (import nixpkgs { system = "x86_64-linux"; crossSystem = "aarch64-linux"; });
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        crossSystem = {
+          config = "aarch64-linux";
+        };
+      };
       # Make configuration for any computer I use in my home office.
       mkHomeMachine =
         configurationNix: extraModules:
         nixpkgs.lib.nixosSystem {
-          inherit system;
+          #          inherit system;
+          inherit pkgs;
           # Arguments to pass to all modules.
-          specialArgs = { inherit system inputs; };
+          specialArgs = { inherit inputs; };
           modules = (
             [
-              (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
+              #              (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
               configurationNix
               ./features/docker.nix
               home-manager.nixosModules.home-manager
               {
+                nixpkgs.hostPlatform = "aarch64-linux";
+                #                nixpkgs.crossSystem = "aarch64-linux";
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.users.nhyne = import ./home.nix {
-                  inherit inputs system;
-                  pkgs = import nixpkgs { inherit system; };
-                  difftastic = difftastic;
-                };
+                #                home-manager.users.nhyne = import ./home.nix {
+                #                  inherit inputs system;
+                #                  pkgs = import nixpkgs { inherit system; };
+                #                  difftastic = difftastic;
+                #                };
               }
             ]
             ++ extraModules

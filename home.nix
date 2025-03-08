@@ -59,8 +59,8 @@ in
 
   #  nix.package = pkgs.nix;
   nix.extraOptions = ''
-    
-        experimental-features = nix-command flakes
+
+    experimental-features = nix-command flakes
   '';
 
   #  home-manager.users.${username}.nix.package = pkgs.lib.mkDefault pkgs.nix;
@@ -132,7 +132,7 @@ in
       stern # multi pod logs in k8s
       treefmt
       inetutils
-      unison-ucm
+      #unison-ucm
       unzip
       #      vector # tool to send things to DD easily
       zip

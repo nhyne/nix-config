@@ -7,50 +7,23 @@
 }:
 {
 
+  #    nixpkgs.overlays = [
+  #        (final: super: {
+  #          makeModulesClosure = x:
+  #            super.makeModulesClosure (x // { allowMissing = true; });
+  #        })
+  #      ];
+
   imports = [
-#     (modulesPath + "/profiles/qemu-guest.nix")
-     (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")
-     ];
+    #     (modulesPath + "/profiles/qemu-guest.nix")
+    (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")
+  ];
 
   boot.loader.grub.enable = false;
   boot.kernelPackages = pkgs.linuxPackages_rpi4;
-  #boot.initrd.availableKernelModules = [
-  #  "virtio_pci"
-  #  "virtio_scsi"
-  #  "ahci"
-  #  "sd_mod"
-  #];
-  #boot.initrd.kernelModules = [ ];
-  #boot.kernelModules = [ ];
-  #boot.extraModulePackages = [ ];
-  #  boot.loader.grub.forceInstall = true;
-  #  boot.loader.grub.device = "nodev";
-  #boot.loader.timeout = 10;
-  #
-  #boot.kernelParams = [ "console=ttyS0,19200n8" ];
-  #boot.loader.grub.extraConfig = ''
-  #  serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1;
-  #  terminal_input serial;
-  #  terminal_output serial
-  #'';
-
-  #hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-  #fileSystems = {
-  #    "/" = {
-  #      device = "/dev/disk/by-label/NIXOS_SD";
-  #      fsType = "ext4";
-  #      options = ["noatime"];
-  #    };
-  #  };
-
-  #boot.loader.grub.forceInstall = true;
-  #boot.loader.grub.device = "nodev";
-  #boot.loader.systemd-boot.enable = true;
-  #boot.loader.efi.canTouchEfiVariables = true;
 
   nix = {
-#    package = pkgs.nixVersions.stable;
+    #    package = pkgs.nixVersions.stable;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
@@ -60,25 +33,25 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [
-    awscli2
-    bat
-    dhall
-    htop
-    jq
-    kubectl
-    loc
-    magic-wormhole
-    minikube
-    ncdu
-    ripgrep
-    rustup
-    saml2aws
-    sbt
-    shellcheck
-    whois
-    xclip
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   awscli2
+  #   bat
+  #   dhall
+  #   htop
+  #   jq
+  #   kubectl
+  #   loc
+  #   magic-wormhole
+  #   minikube
+  #   ncdu
+  #   ripgrep
+  #   rustup
+  #   saml2aws
+  #   sbt
+  #   shellcheck
+  #   whois
+  #   xclip
+  # ];
 
   services = {
     openssh = {
