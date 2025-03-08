@@ -27,7 +27,7 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-    trustedUsers = [
+    settings.trusted-users = [
       "root"
       "nhyne"
     ];
@@ -57,7 +57,7 @@
     openssh = {
       enable = true;
       #      permitRootLogin = "no";
-      passwordAuthentication = false;
+      settings.PasswordAuthentication = false;
     };
   };
 

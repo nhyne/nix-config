@@ -57,14 +57,19 @@ in
 
   imports = baseImports;
 
-  #  nix.package = pkgs.nix;
-  nix.extraOptions = ''
+  nix = {
+    extraOptions = "experimental-features = nix-command flakes";
+    package = pkgs.lib.mkForce pkgs.nix;
+    settings = {
+       substituters = [
+           "https://nix-community.cachix.org"
+       ];
+       trusted-public-keys = [
+         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+       ];
+     };
+  };
 
-    experimental-features = nix-command flakes
-  '';
-
-  #  home-manager.users.${username}.nix.package = pkgs.lib.mkDefault pkgs.nix;
-  nix.package = pkgs.lib.mkForce pkgs.nix;
   home.sessionVariables = {
     EDITOR = "vim";
   };
@@ -103,6 +108,7 @@ in
       bat
       bottom # better top
       buf
+      cachix
       # dig
       difftastic
       ecrlogin
@@ -118,7 +124,7 @@ in
       k9s
       kubectl
       kubectx
-      loc
+      tokei
       lsof
       minikube
       nodejs
