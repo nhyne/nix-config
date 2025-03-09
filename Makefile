@@ -1,4 +1,4 @@
-.PHONY: mac linux
+.PHONY: mac linux raspi_iso
 
 mac:
 	nix run nix-darwin -- switch --flake .
@@ -6,5 +6,6 @@ mac:
 linux:
 	sudo nixos-rebuild switch --flake .#x1-nhyne
 
+# impure build is to access env vars for secrets
 raspi_iso:
-	nix build --show-trace '.#nixosConfigurations.raspi.config.system.build.sdImage' | cachix push nhyne
+	nix build --impure --show-trace --keep-going -j4 --cores 4 '.#nixosConfigurations.raspi.config.system.build.sdImage'

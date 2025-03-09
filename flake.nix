@@ -25,8 +25,6 @@
       ...
     }:
     let
-      #      system = "aarch64-linux";
-      #      pkgs = (import nixpkgs { system = "x86_64-linux"; crossSystem = "aarch64-linux"; });
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         crossSystem = {
@@ -37,13 +35,11 @@
       mkHomeMachine =
         configurationNix: extraModules:
         nixpkgs.lib.nixosSystem {
-          #          inherit system;
           inherit pkgs;
           # Arguments to pass to all modules.
           specialArgs = { inherit inputs; };
           modules = (
             [
-              #              (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
               configurationNix
               #              ./features/docker.nix
               home-manager.nixosModules.home-manager
@@ -52,10 +48,11 @@
                 #                nixpkgs.crossSystem = "aarch64-linux";
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                                home-manager.users.nhyne = import ./home.nix {
-                                  inherit inputs pkgs;
-#                                  pkgs = import nixpkgs { inherit system; };
-                                };
+                #                home-manager.users.nhyne = import ./home.nix {
+                #                  inherit inputs pkgs;
+                #                  isServer = true;
+                #                  #                                  pkgs = import nixpkgs { inherit system; };
+                #                };
               }
             ]
             ++ extraModules
@@ -76,8 +73,10 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 #              home-manager.users.${userName}.nix.package = nixpkgs.lib.mkDefault nixpkgs.legacyPackages.${system}.nix;
-                home-manager.users.${userName} = import ./home.nix { pkgs = nixpkgs.legacyPackages.${system}; };
-                #              home-manager.extraSpecialArgs =;
+                home-manager.users.${userName} = import ./home.nix {
+                  pkgs = nixpkgs.legacyPackages.${system};
+                  isServer = false;
+                };
               }
             ];
           };

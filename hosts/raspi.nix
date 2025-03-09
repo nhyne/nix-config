@@ -5,6 +5,17 @@
   modulesPath,
   ...
 }:
+
+let
+  nix-config = pkgs.fetchFromGitHub {
+    owner = "nhyne";
+    repo = "nix-config";
+    #        url = "https://github.com/nhyne/nix-config";
+    rev = "90efe0715f8541102c832438339cae73e7a76975";
+    hash = "sha256-JimllhqQZ18oauBQ3mOOzsr0k9hZqwa3UHd3dpK/M1Q=";
+  };
+  wifiPassword = builtins.getEnv "LABHOUSE_WIFI_PSK";
+in
 {
 
   nixpkgs.overlays = [
@@ -22,6 +33,12 @@
 
   boot.loader.grub.enable = false;
   boot.kernelPackages = pkgs.linuxPackages_rpi4;
+
+  system.activationScripts.fetchRepo.text = ''
+    mkdir -p /home/nhyne/developer/nix-config
+    cp -r ${nix-config}/* /home/nhyne/developer/nix-config
+    chown -R nhyne:nhyne /home/nhyne/developer/nix-config
+  '';
 
   nix = {
     #    package = pkgs.nixVersions.stable;
@@ -54,7 +71,7 @@
   #   xclip
   # ];
 
-    programs.zsh.enable = true;
+  programs.zsh.enable = true;
 
   services = {
     openssh = {
@@ -62,6 +79,30 @@
       #      permitRootLogin = "no";
       settings.PasswordAuthentication = false;
     };
+
+    #    tailscale = {
+    #        enable = true;
+    #    };
+
+    #    datadog-agent = {
+    #      enable = true;
+    #      apiKeyFile = "/etc/datadog-agent/api-key";
+    #      tags = [ "raspi" ];
+    #      enableLiveProcessCollection = true;
+    #      enableTraceAgent = true;
+    #    };
+  };
+
+  #    networking.networkmanager.enable = true;
+  hardware = {
+    enableRedistributableFirmware = true;
+    firmware = [ pkgs.wireless-regdb ];
+  };
+  networking = {
+    wireless.enable = true;
+    wireless.interfaces = [ "wlan0" ];
+    wireless.userControlled.enable = true;
+    wireless.networks.LabHouse.psk = wifiPassword;
   };
 
   users.mutableUsers = true;
@@ -75,7 +116,7 @@
   };
   users.users = {
     nixos = {
-      isSystemUser   = true;
+      isSystemUser = true;
       uid = 1000;
       home = "/home/nixos";
       name = "nixos";
@@ -88,7 +129,10 @@
     };
     nhyne = {
       isNormalUser = true;
-      extraGroups = [ "wheel" ];
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+      ];
       password = "password";
       openssh.authorizedKeys.keys = [
         "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDwxRycY1AvRNiEFOPtd3gerX/T68jHHkvDu1Y4I4vSxmgv9gZTgXMpli78KCwmZHiXoKE7uc1Nd5lVLCiHol4Zk5zNY2zJ7ltogu9KdzGxJK0axmSF5GnP74VNlWU93/0SzNpgH+PahbWyvMcFe4TVyKESVt2JQjXlhc3otutB+zoFXhVdbqVSm46N9NrxbsSyOhjfzjCc09cgc2o2P9fOe0JYwzpDDWQymnQVQ8fl/EzP0MWCje15YxHZjLgrvYE8K9qkUYSxTWYFDvEf8XzPr9Za5D5IDcfXaCgdDzlkn3x1qd5cDQqrhg1H8QqHnKL/imppdQRKyBxySuIDg6lj4SjTC/G/agxBcsCIzPIO/RSdlFWNyFvvIbGtZHYrduIlW8vSVa9qTNWZyIY8jZjRqi0R5Oe27OuRqp/0Egn9+j6ktjfc3cEYufNaPoAjxMK2OEt/bgHVQXEfPDHy33T094/rbIDS/F+q+k7jQCqW4AstRA/CVR3BOX4Isx70Q78= nhyne@nixos"
