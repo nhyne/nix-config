@@ -63,9 +63,11 @@ in
     settings = {
        substituters = [
            "https://nix-community.cachix.org"
+           "https://nhyne.cachix.org"
        ];
        trusted-public-keys = [
          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+         "nhyne.cachix.org-1:wmICkGYz3W2Y4iEFNpXWtZmlRhqSJzvvslYnZhifg+g="
        ];
      };
   };

@@ -26,7 +26,6 @@
     }:
     let
       #      system = "aarch64-linux";
-      #      difftastic = nixpkgs-master.legacyPackages.${system}.difftastic;
       #      pkgs = (import nixpkgs { system = "x86_64-linux"; crossSystem = "aarch64-linux"; });
       pkgs = import nixpkgs {
         system = "x86_64-linux";
@@ -46,7 +45,7 @@
             [
               #              (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
               configurationNix
-              ./features/docker.nix
+#              ./features/docker.nix
               home-manager.nixosModules.home-manager
               {
                 nixpkgs.hostPlatform = "aarch64-linux";
@@ -54,9 +53,8 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 #                home-manager.users.nhyne = import ./home.nix {
-                #                  inherit inputs system;
+                #                  inherit inputs system pkgs;
                 #                  pkgs = import nixpkgs { inherit system; };
-                #                  difftastic = difftastic;
                 #                };
               }
             ]

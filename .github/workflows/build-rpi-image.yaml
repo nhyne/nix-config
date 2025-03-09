@@ -8,6 +8,4 @@ jobs:
       - name: Build
         run: nix build .#nixosConfigurations.raspi.config.system.build.sdImage
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
