@@ -45,7 +45,7 @@
             [
               #              (nixpkgs + "/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix")
               configurationNix
-#              ./features/docker.nix
+              #              ./features/docker.nix
               home-manager.nixosModules.home-manager
               {
                 nixpkgs.hostPlatform = "aarch64-linux";
