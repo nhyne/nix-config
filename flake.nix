@@ -48,6 +48,8 @@
                 #                nixpkgs.crossSystem = "aarch64-linux";
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
+                # currently home-manager cross compiling is broken, waiting for the PR below to land
+                # https://github.com/nix-community/home-manager/pull/6500
                 #                home-manager.users.nhyne = import ./home.nix {
                 #                  inherit inputs pkgs;
                 #                  isServer = true;

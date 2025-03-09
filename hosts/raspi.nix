@@ -51,26 +51,6 @@ in
     ];
   };
 
-  # environment.systemPackages = with pkgs; [
-  #   awscli2
-  #   bat
-  #   dhall
-  #   htop
-  #   jq
-  #   kubectl
-  #   loc
-  #   magic-wormhole
-  #   minikube
-  #   ncdu
-  #   ripgrep
-  #   rustup
-  #   saml2aws
-  #   sbt
-  #   shellcheck
-  #   whois
-  #   xclip
-  # ];
-
   programs.zsh.enable = true;
 
   services = {
@@ -80,9 +60,9 @@ in
       settings.PasswordAuthentication = false;
     };
 
-    #    tailscale = {
-    #        enable = true;
-    #    };
+    #        tailscale = {
+    #            enable = true;
+    #        };
 
     #    datadog-agent = {
     #      enable = true;
