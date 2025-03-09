@@ -52,10 +52,10 @@
                 #                nixpkgs.crossSystem = "aarch64-linux";
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                #                home-manager.users.nhyne = import ./home.nix {
-                #                  inherit inputs system pkgs;
-                #                  pkgs = import nixpkgs { inherit system; };
-                #                };
+                                home-manager.users.nhyne = import ./home.nix {
+                                  inherit inputs pkgs;
+#                                  pkgs = import nixpkgs { inherit system; };
+                                };
               }
             ]
             ++ extraModules
