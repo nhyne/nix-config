@@ -35,15 +35,17 @@ in
   boot.kernelPackages = pkgs.linuxPackages_rpi4;
 
   system.activationScripts.fetchRepo.text = ''
-    mkdir -p /home/nhyne/developer/nix-config
-    cp -r ${nix-config}/* /home/nhyne/developer/nix-config
-    chown -R nhyne:nhyne /home/nhyne/developer/nix-config
+    
+        mkdir -p /home/nhyne/developer/nix-config
+        cp -r ${nix-config}/* /home/nhyne/developer/nix-config
+        chown -R nhyne:nhyne /home/nhyne/developer/nix-config
   '';
 
   nix = {
     #    package = pkgs.nixVersions.stable;
     extraOptions = ''
-      experimental-features = nix-command flakes
+      
+            experimental-features = nix-command flakes
     '';
     settings.trusted-users = [
       "root"

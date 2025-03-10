@@ -33,7 +33,7 @@
       bl = "branch --sort=-committerdate";
       b = "branch";
       cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d";
-      rb = "!f() { git rebase -i HEAD^$1; }; f"; # interactive git rebase for the previous X commits
+      rb = "!f() { git rebase -i HEAD~$1; }; f"; # interactive git rebase for the previous X commits
       sq = "!f() { git reset --soft HEAD^$1 && git commit; }; f"; # should automatically squash the last N commits into a single one with new commit message
       sl = "stash list"; # lists stashes
       sp = "stash apply"; # pops top stash and applies
@@ -78,7 +78,7 @@
       core.editor = "nvim";
       core.untrackedCache = true;
       core.fsmonitor = true;
-      #      core.autocrlf = true;
+      core.autocrlf = true;
       #credential.helper = "store --file ~/.git-credentials";
       pull.rebase = "false";
       branch.autosetuprebase = "always";

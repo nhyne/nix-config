@@ -13,8 +13,9 @@ pkgs.stdenv.mkDerivation {
     "patchPhase"
   ];
   installPhase = ''
-    mkdir -p $out/bin
-    cp $src $out/bin/argocd
-    chmod +x $out/bin/argocd
+    
+        mkdir -p $out/bin
+        cp $src $out/bin/argocd
+        chmod +x $out/bin/argocd
   '';
 }
