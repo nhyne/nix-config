@@ -7,5 +7,5 @@ home-manager switch -f home.nix
 This means that the pkgs available are based on the nix-channel nixpkgs which can be updated with
 
 ```shell
-nix-channel --udpate
+nix-channel --update
 ```

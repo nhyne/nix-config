@@ -7,8 +7,9 @@
     #
     # This ensures that we always use the official # cache.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs-master.url = "github:nixos/nixpkgs/release-24.11";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    home-manager-master.url = "github:nix-community/home-manager/master";
     home-manager.url = "github:nix-community/home-manager/release-24.11";
 
     darwin.url = "github:lnl7/nix-darwin/nix-darwin-24.11";
@@ -19,13 +20,14 @@
     inputs@{
       self,
       home-manager,
+      home-manager-master,
       nixpkgs,
       nixpkgs-master,
       darwin,
       ...
     }:
     let
-      pkgs = import nixpkgs {
+      pkgs = import nixpkgs-master {
         system = "x86_64-linux";
         crossSystem = {
           config = "aarch64-linux";
@@ -34,7 +36,7 @@
       # Make configuration for any computer I use in my home office.
       mkHomeMachine =
         configurationNix: extraModules:
-        nixpkgs.lib.nixosSystem {
+        nixpkgs-master.lib.nixosSystem {
           inherit pkgs;
           # Arguments to pass to all modules.
           specialArgs = { inherit inputs; };
@@ -42,7 +44,7 @@
             [
               configurationNix
               #              ./features/docker.nix
-              home-manager.nixosModules.home-manager
+              home-manager-master.nixosModules.home-manager
               {
                 nixpkgs.hostPlatform = "aarch64-linux";
                 #                nixpkgs.crossSystem = "aarch64-linux";
@@ -50,12 +52,27 @@
                 home-manager.useUserPackages = true;
                 # currently home-manager cross compiling is broken, waiting for the PR below to land
                 # https://github.com/nix-community/home-manager/pull/6500
-                #                home-manager.users.nhyne = import ./home.nix {
-                #                  inherit inputs pkgs;
-                #                  isServer = true;
-                #                  #                                  pkgs = import nixpkgs { inherit system; };
-                #                };
+                home-manager.users.nhyne = import ./home.nix {
+                  inherit inputs pkgs;
+                  isServer = true;
+                  #                                  pkgs = import nixpkgs { inherit system; };
+                };
               }
+              (
+                { config, pkgs, ... }:
+                {
+                  environment.systemPackages = with pkgs; [
+                    go # Add Go for building
+                    cacert # Ensure CA certificates are available
+                  ];
+
+                  environment.variables = {
+                    SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
+                    GIT_SSL_CAINFO = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
+                    NIX_SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
+                  };
+                }
+              )
             ]
             ++ extraModules
           );

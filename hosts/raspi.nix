@@ -62,9 +62,9 @@ in
       settings.PasswordAuthentication = false;
     };
 
-    #        tailscale = {
-    #            enable = true;
-    #        };
+    #            tailscale = {
+    #                enable = true;
+    #            };
 
     #    datadog-agent = {
     #      enable = true;

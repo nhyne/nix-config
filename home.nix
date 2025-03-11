@@ -16,11 +16,11 @@ let
     dnsutils
     inetutils
     openssl
-    atuin
+    #    atuin
     bat
     bottom # better top
     fd # better find
-    fzf
+    #    fzf
     git
     gnupg
     gron # json grep
@@ -29,7 +29,7 @@ let
     lsof
     ripgrep # faster grep
     sd # sed
-    treefmt
+    #    treefmt
     inetutils
     unzip
     zip
@@ -122,31 +122,32 @@ in
 
   home.sessionVariables = {
     EDITOR = "vim";
+    SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
   };
   home.username = username;
   home.homeDirectory = homeDir;
 
-  programs.go = {
-    enable = true;
-    inherit goPath;
-    package = pkgs.go_1_23;
-    goBin = "${goPath}/bin";
-  };
+  #  programs.go = {
+  #    enable = true;
+  #    inherit goPath;
+  #    package = pkgs.go_1_23;
+  #    goBin = "${goPath}/bin";
+  #  };
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
     #    nix-direnv.enableFlakes = true;
   };
 
-  programs.atuin = {
-    enable = true;
-    enableZshIntegration = true;
-    flags = [ "--disable-up-arrow" ];
-    settings = {
-      auto_sync = false;
-      sync_address = "nowhere";
-    };
-  };
+  #  programs.atuin = {
+  #    enable = true;
+  #    enableZshIntegration = true;
+  #    flags = [ "--disable-up-arrow" ];
+  #    settings = {
+  #      auto_sync = false;
+  #      sync_address = "nowhere";
+  #    };
+  #  };
 
   services.gpg-agent.enable = !isDarwin;
 
