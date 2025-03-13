@@ -1,4 +1,4 @@
-.PHONY: mac linux raspi_iso
+.PHONY: mac linux raspi_iso wsl_home
 
 mac:
 	nix run nix-darwin -- switch --flake .

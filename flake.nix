@@ -105,7 +105,7 @@
         };
     in
     {
-      nixosConfigurations.raspi = mkHomeMachine ./hosts/raspi.nix [ ];
+      nixosConfigurations.raspi = mkHomeMachine ./hosts/raspi.nix [ ./features/docker.nix ];
       nixosConfigurations.x1-nhyne = mkHomeMachine ./hosts/x1-nhyne.nix [ ];
 
       darwinConfigurations = darwinConfigurations;

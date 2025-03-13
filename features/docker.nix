@@ -2,7 +2,8 @@
 {
   virtualisation.podman = {
     enable = true;
-    #dockerCompat = true;
+    dockerCompat = true;
+    defaultNetwork.settings.dns_enabled = true;
   };
-  virtualisation.docker.enable = true;
+  virtualisation.oci-containers.backend = "podman";
 }

@@ -13,10 +13,10 @@ pkgs.stdenv.mkDerivation {
     "patchPhase"
   ];
   installPhase = ''
-    
-        mkdir -p $out/bin
-        tar -xzvf $src -C $out
-        mv $out/saml2aws $out/bin/saml2aws
-        chmod +x $out/bin/saml2aws
+
+    mkdir -p $out/bin
+    tar -xzvf $src -C $out
+    mv $out/saml2aws $out/bin/saml2aws
+    chmod +x $out/bin/saml2aws
   '';
 }
