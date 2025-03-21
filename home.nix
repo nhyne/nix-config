@@ -18,14 +18,18 @@ let
     openssl
     bat
     bottom # better top
+    diskus
     fd # better find
     fzf
     git
     gnupg
     gron # json grep
+    hexyl # hex data viewing
+    hyperfine # cli benchmark
     jq
     tokei
     lsof
+    pastel
     ripgrep # faster grep
     sd # sed
     treefmt
