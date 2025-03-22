@@ -80,8 +80,8 @@ in
         "30443:443"
       ];
       volumes = [
-        "/var/lib/pihole/:/etc/pihole/"
-        "/var/lib/dnsmasq.d:/etc/dnsmasq.d/"
+#        "/var/lib/pihole/:/etc/pihole/"
+#        "/var/lib/dnsmasq.d:/etc/dnsmasq.d/"
       ];
       environment = {
         ServerIP = "127.0.0.1";
@@ -116,8 +116,6 @@ in
     };
 
   };
-
-  #docker run -d --cgroupns host --pid host --name dd-agent -e DD_SITE=<DATADOG_SITE> -e DD_API_KEY=<DATADOG_API_KEY> gcr.io/datadoghq/agent:7
 
   hardware = {
     enableRedistributableFirmware = true;
