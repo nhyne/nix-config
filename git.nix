@@ -85,6 +85,7 @@
       branch.autosetupmerge = "always";
       merge.conflictstyle = "diff3";
       push.default = "current";
+      push.autoSetupRemote = true;
       init.defaultBranch = "main";
       diff."ansible-vault".textconv = "ansible-vault view";
       url = {
