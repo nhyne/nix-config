@@ -47,6 +47,7 @@ let
     dig
     difftastic
     ecrlogin
+    eza
     github-cli
     git-machete
     just
