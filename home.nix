@@ -54,6 +54,7 @@ let
     k9s
     kubectl
     kubectx
+    miller
     minikube
     nodejs
     ncdu
