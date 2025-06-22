@@ -50,6 +50,7 @@ let
     eza
     github-cli
     git-machete
+    gleam
     just
     k9s
     kubectl
