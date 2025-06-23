@@ -46,11 +46,13 @@ let
     cacert
     dig
     difftastic
+    duf
     ecrlogin
     eza
     github-cli
     git-machete
     gleam
+    glow
     just
     k9s
     kubectl
@@ -65,6 +67,8 @@ let
     stern # multi pod logs in k8s
     unison-ucm
     vector # tool to send things to DD easily
+    viddy
+    zoxide
   ];
 
   linuxPkgs =
