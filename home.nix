@@ -20,6 +20,8 @@ let
     bottom # better top
     diskus
     fd # better find
+    firecracker
+    firectl
     fzf
     git
     gnupg
@@ -48,6 +50,7 @@ let
     difftastic
     duf
     ecrlogin
+    erlang
     eza
     github-cli
     git-machete
