@@ -163,6 +163,45 @@ in
     };
   };
 
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = false;
+      format = " $directory$git_branch$git_status$git_state$direnv$custom$sudo$battery ";
+      right_format = "$kubernetes";
+      character = {
+        success_symbol = "[➜](bold green)";
+        error_symbol = "[➜](bold red)";
+#        disabled = true;
+      };
+      git_branch = {
+        format = "([git:\\(](blue)[$branch](red)[\\)](blue))";
+      };
+      git_status = {
+        style = "yellow";
+      };
+      cmd_duration = {
+        min_time = 3000;
+      };
+      direnv = {
+        disabled = false;
+        format = "[$loaded]($style)";
+        loaded_msg = "d";
+        unloaded_msg = "";
+        allowed_msg = "";
+        not_allowed_msg = "";
+        denied_msg = "";
+      };
+      line_break = {
+        disabled = true;
+      };
+      kubernetes = {
+        disabled = false;
+        format = "(\\([$context](red bold):[$namespace](cyan bold)\\))";
+      };
+    };
+  };
+
   services.gpg-agent.enable = !isDarwin;
 
   home.packages = with pkgs; if isServer then serverPkgs else serverPkgs ++ defaultPkgs ++ linuxPkgs;
