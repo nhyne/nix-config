@@ -183,6 +183,9 @@ in
         stashed = "s";
         deleted = "x";
       };
+      git_state = {
+        format = "\([$state( $progress_current/$progress_total)]($style)\)";
+      };
       cmd_duration = {
         min_time = 3000;
       };
