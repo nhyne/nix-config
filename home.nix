@@ -180,6 +180,9 @@ in
       };
       git_status = {
         style = "yellow";
+        modified = "m";
+        stashed = "s";
+        deleted = "x";
       };
       cmd_duration = {
         min_time = 3000;
