@@ -173,7 +173,6 @@ in
       character = {
         success_symbol = "[➜](bold green)";
         error_symbol = "[➜](bold red)";
-#        disabled = true;
       };
       git_branch = {
         format = "([git:\\(](blue)[$branch](red)[\\)](blue))";
@@ -190,11 +189,12 @@ in
       direnv = {
         disabled = false;
         format = "[$loaded]($style)";
-        loaded_msg = "d";
+        loaded_msg = ":";
         unloaded_msg = "";
         allowed_msg = "";
         not_allowed_msg = "";
         denied_msg = "";
+        style = "bold purple";
       };
       line_break = {
         disabled = true;
