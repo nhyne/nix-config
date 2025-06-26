@@ -13,12 +13,10 @@ let
   ecrlogin = pkgs.writeShellScriptBin "ecrlogin" (pkgs.lib.fileContents ./scripts/ecr-login.sh);
 
   serverPkgs = with pkgs; [
-    dnsutils
-    inetutils
-    openssl
     bat
     bottom # better top
-    diskus
+    diskus # better du
+    dnsutils
     fd # better find
     firecracker
     firectl
@@ -28,50 +26,49 @@ let
     gron # json grep
     hexyl # hex data viewing
     hyperfine # cli benchmark
+    inetutils # for net stuff like telnet
     jq
-    tokei
     lsof
-    pastel
+    openssl
+    pastel # color manipulation
     ripgrep # faster grep
     sd # sed
-    treefmt
-    inetutils
+    tokei # code statistics
+    treefmt # formatter for many file types
     unzip
     zip
   ];
 
   defaultPkgs = with pkgs; [
-    atuin
+    atuin # command history tool
     awscli2
-    buf
-    cachix
+    buf # protocol buffer tool
+    cachix # nix cache
     cacert
     dig
-    difftastic
-    duf
+    difftastic # better diff
+    duf # better df
     ecrlogin
     erlang
-    eza
+    eza # better ls
     github-cli
     git-machete
-    gleam
-    glow
-    just
+    gleam # functional programming language
+    glow # markdown viewer
+    just # task runner
     k9s
     kubectl
     kubectx
-    miller
+    miller # cli data manipulation
     minikube
     nodejs
-    ncdu
     nixfmt-rfc-style
-    procs # better ps
     shellcheck
     stern # multi pod logs in k8s
-    unison-ucm
+    unison-ucm # unison programming language
     vector # tool to send things to DD easily
-    viddy
-    zoxide
+    viddy # modern watch
+    zoxide # smarter cd
   ];
 
   linuxPkgs =

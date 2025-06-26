@@ -80,8 +80,8 @@ in
         "30443:443"
       ];
       volumes = [
-#        "/var/lib/pihole/:/etc/pihole/"
-#        "/var/lib/dnsmasq.d:/etc/dnsmasq.d/"
+        #        "/var/lib/pihole/:/etc/pihole/"
+        #        "/var/lib/dnsmasq.d:/etc/dnsmasq.d/"
       ];
       environment = {
         ServerIP = "127.0.0.1";

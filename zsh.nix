@@ -18,6 +18,10 @@ let
     nixm = "nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/master.tar.gz $@";
     summ = "paste -sd+ - | bc";
     history = "history -f";
+    loc = "tokei";
+    watch = "viddy";
+    cd = "z";
+    diff = "difft";
   } // (if isDarwin then { } else linuxClipboard);
   fzfConfig = pkgs.writeText "fzf-config" (lib.fileContents ./configs/fzf-config.zsh);
 
@@ -67,6 +71,7 @@ in
         setopt inc_append_history
         setopt share_history
         source ${fzfConfig}
+        eval "$(zoxide init bash)"
       ''
       + (if isDarwin then "source ~/.dd-zshrc" else "")
     );
