@@ -167,7 +167,7 @@ in
     enable = true;
     settings = {
       add_newline = false;
-      format = "$battery $directory$git_branch$git_status$git_state$direnv$custom$sudo";
+      format = "$battery $directory$git_branch$git_status$git_state$direnv$custom$sudo$character";
       right_format = "$kubernetes";
       command_timeout = 3000;
       character = {
