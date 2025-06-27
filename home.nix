@@ -18,8 +18,6 @@ let
     diskus # better du
     dnsutils
     fd # better find
-    firecracker
-    firectl
     fzf
     git
     gnupg
@@ -78,6 +76,8 @@ let
         dhall
         difftastic
         dust # better du
+        firecracker
+        firectl
         firefox
         gcc
         gdb
