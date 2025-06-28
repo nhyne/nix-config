@@ -31,6 +31,7 @@ let
 
 in
 {
+  programs.zoxide.enable = true; # smarter cd
 
   programs.zsh = {
     enable = true;

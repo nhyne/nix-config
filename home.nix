@@ -66,7 +66,6 @@ let
     unison-ucm # unison programming language
     vector # tool to send things to DD easily
     viddy # modern watch
-    zoxide # smarter cd
   ];
 
   linuxPkgs =
