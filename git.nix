@@ -16,6 +16,7 @@
       cm = "commit";
       mc = "diff --name-only --diff-filter=U --relative";
       cmn = "commit --no-verify";
+      maint = "maintenance register";
       a = "add";
       f = "fetch";
       ae = "add -u"; # adds all modified, does not add new files
@@ -88,6 +89,7 @@
       push.autoSetupRemote = true;
       init.defaultBranch = "main";
       diff."ansible-vault".textconv = "ansible-vault view";
+      feature.manyFiles = true;
       url = {
         "git@github.com:" = {
           insteadOf = "https://github.com/";
