@@ -9,7 +9,6 @@ let
   shellAliases = {
     kubeami = "kubectl config current-context";
     ll = "eza -lah";
-    wthr = "curl wttr.in";
     ghpr = "gh pr create";
     vi = "nvim";
     vim = "nvim";
@@ -73,6 +72,14 @@ in
         setopt share_history
         source ${fzfConfig}
         eval "$(zoxide init bash)"
+        
+        wthr() {
+          if [ $# -eq 0 ]; then
+            curl wttr.in
+          else
+            curl "wttr.in/$1"
+          fi
+        }
       ''
       + (if isDarwin then "source ~/.dd-zshrc" else "")
     );
