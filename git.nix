@@ -77,6 +77,7 @@
     ];
     extraConfig = {
       core.editor = "nvim";
+      core.pager = "delta";
       core.untrackedCache = true;
       core.fsmonitor = true;
       #      core.autocrlf = true;

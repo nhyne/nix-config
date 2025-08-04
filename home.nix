@@ -43,6 +43,7 @@ let
     buf # protocol buffer tool
     cachix # nix cache
     cacert
+    delta
     dig
     difftastic # better diff
     duf # better df
