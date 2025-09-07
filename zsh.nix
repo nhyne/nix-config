@@ -21,7 +21,6 @@ let
     watch = "viddy";
     cd = "z";
     diff = "difft";
-    claude = "npx @anthropic-ai/claude-code";
   } // (if isDarwin then { } else linuxClipboard);
   fzfConfig = pkgs.writeText "fzf-config" (lib.fileContents ./configs/fzf-config.zsh);
 
