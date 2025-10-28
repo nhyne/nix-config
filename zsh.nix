@@ -7,6 +7,7 @@ let
     pbpaste = "xclip -selection clipboard -o";
   };
   shellAliases = {
+    bkt = "bkt -- $@";
     kubeami = "kubectl config current-context";
     ll = "eza -lah";
     ghpr = "gh pr create";
@@ -47,6 +48,7 @@ in
       ];
     };
     sessionVariables = {
+      BKT_TTL = "5m";
       EDITOR = "vim";
       SDKMAN_DIR = "$HOME/.sdkman";
       # PATH = "$HOME/.cargo/bin:$HOME/.jenv/bin:$GOBIN:$PATH";

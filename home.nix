@@ -40,6 +40,7 @@ let
   defaultPkgs = with pkgs; [
     atuin # command history tool
     awscli2
+    bkt # cache for commands
     buf # protocol buffer tool
     cachix # nix cache
     cacert
