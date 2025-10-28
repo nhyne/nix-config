@@ -87,6 +87,7 @@
         in
         {
           COMP-CDJJ7X690W = defaultMacosSystem;
+          COMP-D7JNF3Q2K3 = defaultMacosSystem;
         };
     in
     {

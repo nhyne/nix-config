@@ -152,6 +152,10 @@ in
     nix-direnv.enable = true;
     #    nix-direnv.enableFlakes = true;
   };
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   programs.atuin = {
     enable = !isServer;

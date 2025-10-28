@@ -31,7 +31,7 @@
   environment.systemPackages = with pkgs; [
     hound
     #mutagen
-    vscode
+    #vscode
     #pre-commit
     yubikey-manager
   ];

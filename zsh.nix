@@ -23,7 +23,6 @@ let
     diff = "difft";
     claude = "npx @anthropic-ai/claude-code";
   } // (if isDarwin then { } else linuxClipboard);
-  fzfConfig = pkgs.writeText "fzf-config" (lib.fileContents ./configs/fzf-config.zsh);
 
   macSession = {
     PATH = "/etc/profiles/per-user/adam.johnson/bin:/run/current-system/sw/bin/:$PATH";
@@ -71,7 +70,6 @@ in
         export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels:$HOME/.nixpkgs/darwin-configuration.nix:$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
         setopt inc_append_history
         setopt share_history
-        source ${fzfConfig}
         eval "$(zoxide init bash)"
         
         wthr() {
