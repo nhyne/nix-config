@@ -40,13 +40,16 @@ let
   defaultPkgs = with pkgs; [
     atuin # command history tool
     awscli2
+    bandwhich
     bkt # cache for commands
     buf # protocol buffer tool
     cachix # nix cache
     cacert
+    csvlens
     delta
     dig
     difftastic # better diff
+    dua
     duf # better df
     ecrlogin
     erlang
