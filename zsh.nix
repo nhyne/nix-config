@@ -22,7 +22,7 @@ let
     watch = "viddy";
     cd = "z";
     diff = "difft";
-    claude = "npx @anthropic-ai/claude-code";
+    claude = "npx @anthropic-ai/claude-code@2.0.69";
   } // (if isDarwin then { } else linuxClipboard);
 
   macSession = {

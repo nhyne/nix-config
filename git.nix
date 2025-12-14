@@ -74,6 +74,7 @@
       ".metals"
       "*.iml"
       "nogit"
+      ".claude"
     ];
     extraConfig = {
       core.editor = "nvim";
