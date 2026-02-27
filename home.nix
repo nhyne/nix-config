@@ -1,4 +1,4 @@
-{ pkgs, ... }@args:
+{ pkgs, masterpkgs, ... }@args:
 
 let
   inherit (pkgs.stdenv.hostPlatform) isDarwin;
@@ -45,9 +45,9 @@ let
     buf # protocol buffer tool
     cachix # nix cache
     cacert
+    masterpkgs.claude-code
     csvlens
     delta
-    dig
     difftastic # better diff
     dua
     duf # better df
@@ -147,9 +147,11 @@ in
 
   programs.go = {
     enable = true;
-    inherit goPath;
-    package = pkgs.go_1_23;
-    goBin = "${goPath}/bin";
+    package = pkgs.go;
+    env = {
+      GOPATH = "${homeDir}/${goPath}";
+      GOBIN = "${homeDir}/${goPath}/bin";
+    };
   };
   programs.direnv = {
     enable = true;

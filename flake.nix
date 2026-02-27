@@ -3,13 +3,13 @@
 
   inputs = {
     # https://status.nixos.org/
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager-master.url = "github:nix-community/home-manager/master";
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
 
-    darwin.url = "github:lnl7/nix-darwin/nix-darwin-24.11";
+    darwin.url = "github:lnl7/nix-darwin/nix-darwin-25.11";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -77,8 +77,13 @@
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
+                home-manager.backupFileExtension = "backup";
                 home-manager.users.${userName} = import ./home.nix {
                   pkgs = nixpkgs.legacyPackages.${system};
+                  masterpkgs = import nixpkgs-master {
+                    inherit system;
+                    config.allowUnfree = true;
+                  };
                   isServer = false;
                 };
               }

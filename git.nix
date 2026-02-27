@@ -9,9 +9,12 @@
   programs.git = {
     #package = pkgs.gitAndTools.gitFull;
     enable = true;
-    userName = "nhyne";
-    userEmail = "nhyne@nhyne.dev";
-    aliases = {
+    settings = {
+      user = {
+        name = "nhyne";
+        email = "nhyne@nhyne.dev";
+      };
+      alias = {
       c = "checkout";
       cm = "commit";
       mc = "diff --name-only --diff-filter=U --relative";
@@ -60,23 +63,7 @@
       #ssa = "!f() { git stash save -u ${@:1}; }; f"; #stashes everything with a message, message does not have to be put into quotes
       wip = "for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads";
       fzs = "!f() { git branch --sort=-committerdate --format='%(refname:short)' | fzf | xargs git switch; } ; f";
-    };
-    ignores = [
-      ".idea"
-      ".DS_Store"
-      "result"
-      "target"
-      ".terraform"
-      ".ijwb"
-      "bazel-*"
-      "stale_outputs_checked"
-      ".bloop"
-      ".metals"
-      "*.iml"
-      "nogit"
-      ".claude"
-    ];
-    extraConfig = {
+      };
       core.editor = "nvim";
       core.pager = "delta";
       core.untrackedCache = true;
@@ -99,5 +86,20 @@
         #"git://" = { insteadOf = "https://"; };
       };
     };
+    ignores = [
+      ".idea"
+      ".DS_Store"
+      "result"
+      "target"
+      ".terraform"
+      ".ijwb"
+      "bazel-*"
+      "stale_outputs_checked"
+      ".bloop"
+      ".metals"
+      "*.iml"
+      "nogit"
+      ".claude"
+    ];
   };
 }

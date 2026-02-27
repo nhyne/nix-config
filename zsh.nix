@@ -22,7 +22,6 @@ let
     watch = "viddy";
     cd = "z";
     diff = "difft";
-    claude = "npx @anthropic-ai/claude-code@2.0.69";
   } // (if isDarwin then { } else linuxClipboard);
 
   macSession = {
@@ -65,7 +64,7 @@ in
       size = 1000000;
       save = 1000000;
     };
-    initExtra = pkgs.lib.strings.trim (
+    initContent = pkgs.lib.strings.trim (
       ''
         if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
         export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
