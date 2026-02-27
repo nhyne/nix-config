@@ -7,6 +7,7 @@ let
   baseImports = [
     ./git.nix
     ./zsh.nix
+    ./claude.nix
   ] ++ (if isServer then [ ] else [ ./vim.nix ]);
   goPath = "developer/go";
 

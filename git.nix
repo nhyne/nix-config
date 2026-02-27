@@ -100,6 +100,8 @@
       "*.iml"
       "nogit"
       ".claude"
+      "plan.md"
+      "research.md"
     ];
   };
 }
