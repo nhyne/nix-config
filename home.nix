@@ -8,7 +8,7 @@ let
     ./git.nix
     ./zsh.nix
     ./claude.nix
-  ] ++ (if isServer then [ ] else [ ./vim.nix ]);
+  ] ++ (if isServer then [ ] else [ ./vim.nix ./zed.nix ]);
   goPath = "developer/go";
 
   ecrlogin = pkgs.writeShellScriptBin "ecrlogin" (pkgs.lib.fileContents ./scripts/ecr-login.sh);

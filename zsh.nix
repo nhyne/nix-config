@@ -10,7 +10,7 @@ let
     bkt = "bkt -- $@";
     kubeami = "kubectl config current-context";
     ll = "eza -lah";
-    ghpr = "gh pr create";
+    ghpr = "gh pr create -d";
     vi = "nvim";
     vim = "nvim";
     del = "trash";
