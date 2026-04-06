@@ -21,6 +21,9 @@
     "metrics": false,
   },
   "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "on_yank"
+  },
   "icon_theme": "Material Icon Theme",
   "base_keymap": "JetBrains",
   "ui_font_size": 16,
