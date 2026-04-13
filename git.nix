@@ -63,11 +63,11 @@
       #ssa = "!f() { git stash save -u ${@:1}; }; f"; #stashes everything with a message, message does not have to be put into quotes
       wip = "for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads";
       fzs = "!f() { git branch --sort=-committerdate --format='%(refname:short)' | fzf | xargs git switch; } ; f";
-      changes = "log --format=format: --name-only --since=\"1 year ago\" | sort | uniq -c | sort -nr | head -20";
+      changes = "!git log --format=format: --name-only --since=\"1 year ago\" | sort | uniq -c | sort -nr | head -20";
       who = "shortlog -sn --no-merges";
-      bugs = "log -i -E --grep=\"fix|bug|broken\" --name-only --format='' | sort | uniq -c | sort -nr | head -20";
-      speed = "log --format='%ad' --date=format:'%Y-%m' | sort | uniq -c";
-      fire = "log --oneline --since=\"1 year ago\" | grep -iE 'revert|hotfix|emergency|rollback'";
+      bugs = "!git log -i -E --grep=\"fix|bug|broken\" --name-only --format='' | sort | uniq -c | sort -nr | head -20";
+      speed = "!git log --format='%ad' --date=format:'%Y-%m' | sort | uniq -c";
+      fire = "!git log --oneline --since=\"1 year ago\" | grep -iE 'revert|hotfix|emergency|rollback'";
       summary = "!f() { \
         printf \"Summary of this branch...\n\"; \
         printf \"%s\n\" $(git rev-parse --abbrev-ref HEAD); \
