@@ -46,7 +46,6 @@ let
     buf # protocol buffer tool
     cachix # nix cache
     cacert
-    masterpkgs.claude-code
     csvlens
     delta
     difftastic # better diff
@@ -78,6 +77,7 @@ let
     with pkgs;
     if !isDarwin then
       [
+        masterpkgs.claude-code
         dhall
         difftastic
         dust # better du
