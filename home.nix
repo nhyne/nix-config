@@ -8,6 +8,7 @@ let
     ./git.nix
     ./zsh.nix
     ./claude.nix
+    ./slack-pr-reviewer.nix
   ] ++ (if isServer then [ ] else [ ./vim.nix ./zed.nix ]);
   goPath = "developer/go";
 
