@@ -11,6 +11,9 @@
     "enable_preview_from_project_panel": false,
     "enabled": true
   },
+  "project_panel": {
+    "dock": "left"
+  },
   "use_system_window_tabs": true,
   "tabs": {
     "git_status": true,
@@ -49,6 +52,15 @@
       "model": "anthropic/claude-sonnet-4-5-20250929",
     },
     "model_parameters": [],
+  },
+  "lsp": {
+    "gopls": {
+      "initialization_options": {
+        "env": {
+          "GOPACKAGESDRIVER": "/Users/adam.johnson/go/src/github.com/DataDog/dd-source/tools/go/gopackagesdriver.sh",
+        },
+      },
+    },
   },
   "language_models": {
     "openai_compatible": {
